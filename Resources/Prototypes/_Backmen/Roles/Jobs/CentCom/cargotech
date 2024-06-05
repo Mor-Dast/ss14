@@ -1,0 +1,46 @@
+- type: statusIcon
+  parent: JobIcon
+  id: JobIconCCCargoTech
+  icon:
+    sprite: /Textures/Backmen/Icons/jobicon.rsi
+    state: CargoTechnician
+
+
+- type: entity
+  parent: OrdenPDA
+  id: CCCargoPDA
+  name: Centcom Cargo PDA
+  description: Light green sign of walking bureaucracy.
+  components:
+    - type: Pda
+      id: IDCardCentComCargoBackmen
+      state: pda-centcomcargo
+      penSlot:
+        startingItem: PenCentcom
+        whitelist:
+          tags:
+            - Write
+    - type: PdaBorderColor
+      borderColor: "#00842e"
+    - type: Icon
+      sprite: Backmen/Objects/Devices/pda.rsi
+      state: pda-centcomcargo
+
+- type: entity
+  parent: CentcomIDCardDeathsquad
+  id: IDCardCentComCargoBackmen
+  name: ID карта ЦК Грузчика
+  components:
+    - type: Sprite
+      layers:
+        - state: centcom
+        - state: idcargotechnician
+    - type: PresetIdCard
+      job: BKCCCargo
+    - type: Access
+      tags:
+        - CCCargo
+        - CentralCommand
+        - Cargo
+        - Maintenance
+        - Salvage

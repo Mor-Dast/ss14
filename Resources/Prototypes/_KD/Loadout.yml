@@ -1,0 +1,27 @@
+
+- type: loadout
+  id: ClothingOuterCoatExpensive
+  equipment: ClothingOuterCoatExpensive
+
+- type: startingGear
+  id: ClothingOuterCoatExpensive
+  equipment:
+    outerClothing: ClothingOuterCoatExpensive
+
+- type: loadout
+  id: ClothingOuterCoatSpaceAsshole
+  equipment: ClothingOuterCoatSpaceAsshole
+ 
+- type: startingGear
+  id: ClothingOuterCoatSpaceAsshole
+  equipment:
+    outerClothing: ClothingOuterCoatSpaceAsshole
+
+- type: loadout
+  id: ClothingHeadHatSyndie
+  equipment: ClothingHeadHatSyndie
+
+- type: startingGear
+  id: ClothingHeadHatSyndie
+  equipment:
+    head: ClothingHeadHatSyndie

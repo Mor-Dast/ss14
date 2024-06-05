@@ -1,0 +1,16 @@
+{
+    "version": 1,
+    "size": {
+      "x": 32,
+      "y": 32
+    },
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Taken from tgStation at https://github.com/tgstation/tgstation/tree/master/icons/mob/human/species/golems.dmi",
+    "states": [
+      {
+        "name": "golem",
+        "directions": 4
+      }
+    ]
+  }
+  

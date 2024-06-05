@@ -1,0 +1,458 @@
+#-------------------ВСЕ НИЖЕ ЭТО РАЗРАБОТКИ КОСМОДРОМА И БУДЕТ СО СТО ПРОЦЕНТНОЙ ВЕРОЯТНОСТЬЮ ДОРАБАТЫВАТСЯ!!!-------------------
+
+- type: entity
+  name: Спавнер Дрейка
+  id: SpawnMobDrake
+  parent: SpawnMobLegion
+  components:
+  - type: ConditionalSpawner
+    prototypes:
+    - MobAshDrake
+
+- type: entity
+  name: Спавнер Колосса
+  id: SpawnMobColossus 
+  parent: SpawnMobLegion
+  components:
+  - type: ConditionalSpawner
+    prototypes:
+    - MobColossus 
+
+- type: entity
+  name: Спавнер Бубльгум
+  id: SpawnMobBubblegum
+  parent: SpawnMobLegion
+  components:
+  - type: ConditionalSpawner
+    prototypes:
+    - MobBubblegum
+
+- type: entity
+  name: Спавнер большого Легиона
+  id: SpawnMobBigLegion
+  parent: SpawnMobLegion
+  components:
+  - type: ConditionalSpawner
+    prototypes:
+    - MobDinosaurAnki
+
+- type: constructionGraph
+  id: LavaKinetic1
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: upgraded
+          steps:
+            - tag: LavaModifierCrafting 
+              doAfter: 2
+    - node: upgraded
+      entity: LavaWeaponProtoKineticAccelerator
+
+- type: entity
+  parent: MicroManipulatorStockPart
+  id: LavaModifierLegion
+  name: трофей легиона
+  description: Улучшает оружие шахтеров. Например крушитель.
+  suffix: Лава, трофей
+  components:
+  - type: Sprite
+    sprite: _KD/Lava/legion.rsi
+    layers:
+      - state: dragon
+        map: ["enum.DamageStateVisualLayers.Base"]
+  - type: Construction
+    graph: LavaKinetic2
+    node: start 
+  - type: Tag
+    tags:
+    - LavaModifierCraftingL
+
+- type: entity
+  parent: MicroManipulatorStockPart
+  id: LavaModifierBloodMiner
+  name: глаз кровавого шахтёра
+  description: Улучшает оружие шахтеров. Например крушитель.
+  suffix: Лава, трофей
+  components:
+  - type: Sprite
+    sprite: _KD/Lava/legion.rsi
+    layers:
+      - state: dragon
+        map: ["enum.DamageStateVisualLayers.Base"]
+  - type: Construction
+    graph: LavaCrusher
+    node: KSH
+  - type: Tag
+    tags:
+    - LavaModifierCraftingKSH
+
+- type: constructionGraph
+  id: LavaCrusher
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: upgradedL
+          steps: 
+            - tag: LavaModifierCraftingL
+              doAfter: 2
+
+        - to: upgradedKSH
+          steps:
+            - tag: LavaModifierCraftingKSH
+              doAfter: 2
+
+
+    - node: upgradedL
+      entity: WeaponCrusherL
+      edges:
+        - to: start
+          completed:
+            - !type:GivePrototype
+              prototype: LavaModifierLegion
+              amount: 2
+          steps:
+            - tool: Prying
+              doAfter: 2
+
+    - node: upgradedKSH
+      entity: WeaponCrusherKSH
+      edges:
+        - to: start
+          completed:
+            - !type:GivePrototype
+              prototype: LavaModifierBloodMiner
+              amount: 2
+          steps:
+            - tool: Prying
+              doAfter: 2
+
+- type: entity
+  parent: WeaponCrusher
+  id: WeaponCrusherL
+  suffix: Лава, трофей
+  name: крушитель
+  description: "На крушителе имеются следующие трофеи: череп легиона" 
+  components:
+  - type: Gun
+    fireRate: 1.3
+  - type: Construction
+    graph: LavaCrusher1
+    node: start
+
+- type: constructionGraph
+  id: LavaCrusher2
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: upgraded
+          steps: 
+            - tag: LavaModifierCraftingL
+              doAfter: 2
+
+    - node: upgraded
+      entity: WeaponCrusherLKSH
+      edges:
+        - to: start
+          completed:
+            - !type:GivePrototype
+              prototype: LavaModifierLegion
+              amount: 2
+          steps:
+            - tool: Prying
+              doAfter: 2
+
+- type: constructionGraph
+  id: LavaCrusher1
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: upgraded
+          steps: 
+            - tag: LavaModifierCraftingKSH
+              doAfter: 2
+
+    - node: upgraded
+      entity: WeaponCrusherLKSH
+      edges:
+        - to: start
+          completed:
+            - !type:GivePrototype
+              prototype: LavaModifierBloodMiner
+              amount: 2
+          steps:
+            - tool: Prying
+              doAfter: 2
+
+- type: entity
+  parent: WeaponCrusher
+  id: WeaponCrusherKSH
+  suffix: Лава, трофей
+  name: крушитель
+  description: "На крушителе имеются следующие трофеи: глаз кровавого шахтера"  
+  components:
+  - type: LeechOnMarker
+    leech:
+      groups:
+        Brute: -21
+  - type: Construction
+    graph: LavaCrusher2
+    node: start
+
+- type: entity
+  parent: WeaponCrusher
+  id: WeaponCrusherLKSH
+  suffix: Лава, трофей
+  name: крушитель
+  description: "На крушителе имеются следующие трофеи: глаз кровавого шахтера, череп легиона" 
+  components:
+  - type: LeechOnMarker
+    leech:
+      groups:
+        Brute: -4
+  - type: Gun
+    fireRate: 1.3
+
+- type: entity
+  parent: SalvageHumanCorpse
+  id: MobSalvageSpecialistCorpse
+  suffix: Dead, Cargo
+  components:
+  - type: Loadout
+    prototypes:
+    - SalvageSpecialistGear
+
+- type: Tag
+  id: LavaModifierCraftingL
+
+- type: Tag
+  id: LavaModifierCrafting
+
+- type: Tag
+  id: LavaWeaponProtoKineticAccelerator
+
+- type: Tag
+  id: WeaponProtoKineticAcceleratorCrafting
+
+- type: Tag
+  id: HealingToolboxKernelCrafting
+
+- type: Tag
+  id: FoodMeatGoliathCrafting 
+
+- type: Tag
+  id: LavaModifierCraftingKSH
+
+- type: Tag
+  id: LavaModifierCraftingLKSH
+
+- type: entity
+  parent: MobBubblegum
+  id: MobDinosaurAnkiMedium
+  suffix: Большой разчленёныш
+  name: Легион
+  components:
+  - type: Sprite
+    sprite: _KD/Lava/empire.rsi
+    scale: 0.7, 0.7
+    layers:
+      - state: mega_legion
+        map: ["enum.DamageStateVisualLayers.Base"]
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: mega_legion
+      Dead:
+        Base: eva_attack
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 4.5
+    baseSprintSpeed: 3
+  - type: PointLight
+    radius: 0
+    energy: 0
+    color: "#ff4242"
+    castShadows: false  
+  - type: MobThresholds #ХП
+    thresholds:
+      0: Alive
+      200: Dead  
+  - type: MeleeWeapon
+    soundHit:
+        path: /Audio/Weapons/Xeno/alien_claw_flesh3.ogg
+    angle: 0
+    animation: AttackLava
+    damage:
+      types:
+        Blunt: 5
+        Structural: 100
+  - type: Fixtures
+    fixtures: 
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.35
+        density: 185
+        restitution: 0.0
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: Destructible 
+    thresholds:
+      - trigger:
+          !type:DamageTrigger
+          damage: 200
+        behaviors:
+        - !type:DoActsBehavior
+          acts: [ "Destruction" ]
+        - !type:SpawnEntitiesBehavior
+          spawn:
+            HealingToolboxKernel:
+              min: 1
+              max: 2
+            MobDinosaurAnkiSmall1:
+              min: 2
+              max: 2
+  - type: Bloodstream
+    bloodMaxVolume: 0
+    bloodReagent: Cryoxadone
+
+- type: entity
+  parent: MobBubblegum
+  id: MobDinosaurAnkiSmall1
+  suffix: Средний разчленёныш
+  name: Легион
+  components:
+  - type: Sprite
+    sprite: _KD/Lava/empire.rsi
+    scale: 0.5, 0.5
+    layers:
+      - state: mega_legion
+        map: ["enum.DamageStateVisualLayers.Base"]
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: mega_legion
+      Dead:
+        Base: eva_attack
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 4.5
+    baseSprintSpeed: 3
+  - type: PointLight
+    radius: 0
+    energy: 0
+    color: "#ff4242"
+    castShadows: false  
+  - type: MobThresholds #ХП
+    thresholds:
+      0: Alive
+      100: Dead  
+  - type: MeleeWeapon
+    soundHit:
+        path: /Audio/Weapons/Xeno/alien_claw_flesh3.ogg
+    angle: 0
+    animation: AttackLava
+    damage:
+      types:
+        Blunt: 5
+        Structural: 100
+  - type: Destructible 
+    thresholds:
+      - trigger:
+          !type:DamageTrigger
+          damage: 100
+        behaviors:
+        - !type:DoActsBehavior
+          acts: [ "Destruction" ]
+        - !type:SpawnEntitiesBehavior
+          spawn:
+            HealingToolboxKernel:
+              min: 1
+              max: 1
+  - type: Fixtures
+    fixtures: 
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.35
+        density: 185
+        restitution: 0.0
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: Bloodstream
+    bloodMaxVolume: 0
+    bloodReagent: Cryoxadone
+
+- type: entity
+  parent: 
+   - MobBubblegum
+   - BaseMobHuman
+  id: BloodMinerMob
+  name: кровавый шахтёр
+  components:
+  - type: Fixtures
+    fixtures: 
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.35
+        density: 185
+        restitution: 0.0
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 2.5
+    baseSprintSpeed: 4
+  - type: PointLight
+    radius: 0
+    energy: 0
+    color: "#ff4242"
+    castShadows: false  
+  - type: MobThresholds #ХП
+    thresholds:
+      0: Alive
+      400: Dead  
+  - type: MeleeWeapon
+    soundHit:
+        path: /Audio/Weapons/Xeno/alien_claw_flesh3.ogg
+    angle: 0
+    animation: AttackLava
+    damage:
+      types:
+        Blunt: 15
+  - type: Destructible 
+    thresholds:
+      - trigger:
+          !type:DamageTrigger
+          damage: 350 
+        behaviors:
+        - !type:DoActsBehavior
+          acts: [ "Destruction" ]
+        - !type:SpawnEntitiesBehavior
+          spawn:
+            LavaWeaponProtoKineticAccelerator:
+              min: 1
+              max: 1
+            BloodPila:
+              min: 1
+              max: 1
+  - type: Loadout
+    prototypes:
+    - BloodMinerGear
+  - type: Bloodstream
+    bloodMaxVolume: 0
+    bloodReagent: Cryoxadone
+
+- type: entity
+  name: кровавая пила
+  parent: BaseKnife
+  id: BloodPila
+  description: Кровавая пила, вся в крови.
+  co

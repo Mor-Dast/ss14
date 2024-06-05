@@ -1,0 +1,84 @@
+- type: latheRecipe
+  id: PsiSeed
+  result: PsiSeed
+  completetime: 60
+  materials:
+    DimSeed: 100
+    Plasma: 500
+
+- type: reaction
+  id: MetKristal
+  impact: Low
+  quantized: true
+  conserveEnergy: false
+  reactants:
+    Desoxyephedrine:
+      amount: 20
+    Hydrogen:
+      amount: 10
+      catalyst: true
+  effects:
+    - !type:CreateEntityReactionEffect
+      entity: MethCristall
+
+- type: constructionGraph
+  id: smokeableJointDimolist
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: joint
+          steps:
+            - material: PaperRolling
+            - material: CigaretteFilter
+            - material: GroundDimFood
+              doAfter: 2
+    - node: joint
+      entity: JointDimolist
+
+
+- type: construction
+  name: косяк (дымолист)
+  id: smokeableJointDimolist
+  graph: smokeableJointDimolist
+  startNode: start
+  targetNode: JointDimolist
+  category: construction-category-misc
+  description: "A roll of dried plant matter wrapped in thin paper."
+  icon: { sprite: Objects/Consumable/Smokeables/Cannabis/joint.rsi, state: unlit-icon }
+  objectType: Item
+
+- type: constructionGraph
+  id: smokeableGroundDim
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: ground
+          steps:
+            - material: LeavesDimFoodDried
+              amount: 2
+              doAfter: 5
+    - node: ground
+      entity: GroundDimFood
+
+- type: construction
+  name: сушенный дымолист
+  id: smokeableGroundDim
+  graph: smokeableGroundDim
+  startNode: start
+  targetNode: ground
+  category: construction-category-misc
+  description: "Мммм вкусна."
+  icon: { sprite: Objects/Misc/reagent_fillings.rsi, state: powderpile }
+  color: darkgreen
+  objectType: Item
+
+- type: microwaveMealRecipe
+  id: smokeableGroundDim
+  name: рецепт сушенного листа дымолиста
+  result: LeavesDimFoodDried
+  time: 10
+  solids:
+    DimFood: 1
+

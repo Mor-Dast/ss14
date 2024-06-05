@@ -3,6 +3,9 @@
   name: job-name-chaplain
   description: job-description-chaplain
   playTimeTracker: JobChaplain
+  requirements:
+    - !type:OverallPlaytimeRequirement
+      time: 1 
   startingGear: ChaplainGear
   icon: "JobIconChaplain"
   supervisors: job-supervisors-hop

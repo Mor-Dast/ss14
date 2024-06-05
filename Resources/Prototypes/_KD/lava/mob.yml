@@ -1,0 +1,664 @@
+- type: entity
+  parent: MobHellspawn
+  id: MobBubblegum
+  name: Бубльгум
+  description: Большой демон!
+  suffix: Лава, фауна
+  components:
+  - type: Sprite
+    sprite: _KD/Lava/dragon.rsi
+    layers:
+      - state: bubblegum
+        map: ["enum.DamageStateVisualLayers.Base"]
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: bubblegum
+      Dead:
+        Base: bubblegum
+  - type: MeleeWeapon
+    soundHit:
+        path: /Audio/Weapons/Xeno/alien_claw_flesh3.ogg
+    angle: 0
+    animation: AttackLava
+    damage:
+      types:
+        Blunt: 50
+        Piercing: 15
+        Structural: 500
+  - type: MovementSpeedModifier #Скорость
+    baseWalkSpeed: 2
+    baseSprintSpeed: 6
+  - type: Reflect 
+    enabled: true
+    reflectProb: 0.5
+    velocityBeforeNotMaxProb: 1.0
+    velocityBeforeMinProb: 3.0
+    minReflectProb: 0.1
+    spread: 90      #Отражение 
+  - type: MobThresholds #ХП
+    thresholds:
+      0: Alive
+      1000: Dead
+  - type: Destructible 
+    thresholds:
+      - trigger:
+          !type:DamageTrigger
+          damage: 1000  
+        behaviors:
+        - !type:DoActsBehavior
+          acts: [ "Destruction" ]
+        - !type:SpawnEntitiesBehavior
+          spawn:
+            ClothingNeckCloakGoliathCloakHellspawn:
+              min: 1
+              max: 1
+            ArtifactFragment:
+              min: 3
+              max: 5
+  - type: PointLight
+    radius: 2
+    energy: 2.5
+    color: "#ff4242"
+    castShadows: false
+  - type: PassiveDamage # Slight passive regen. Assuming one damage type, comes out to about 4 damage a minute.Самолечение
+    allowedStates:
+    - Alive
+    damageCap: 2000
+    damage:
+      types:
+        Heat: -99
+      groups:
+        Brute: -10  
+        Toxin: -10
+        Airloss: -10
+        Burn: -10
+  - type: AutoImplant
+    implants:
+    - LightImplantSpiderBubblegum   
+    - BaseSubdermalImplantWall
+    - LightImplantSpiderBubblegumRune
+    - LightImplantSpiderActionBlinkBubblegumJump
+    - LavaLightImplanter
+  - type: IgnoreSpiderWeb  
+  - type: Vocal 
+    sounds:
+      Male: UnisexBreath
+      Female: UnisexBreath
+      Unsexed: UnisexBreath #Крик
+
+- type: entity
+  parent: MobBubblegum
+  id: MobAshDrake
+  name: Дрейк
+  suffix: Лава, фауна
+  components:
+  - type: Fixtures
+    fixtures: 
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.35
+        density: 185
+        restitution: 0.0
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: Sprite
+    sprite: _KD/Lava/dragon.rsi
+    layers:
+      - state: dragon
+        map: ["enum.DamageStateVisualLayers.Base"]  
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: dragon
+      Dead:
+        Base: dragon_dead 
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 4
+    baseSprintSpeed: 6
+  - type: RechargeBasicEntityAmmo #Кислота 
+    rechargeCooldown: 5
+  - type: BasicEntityAmmoProvider
+    proto: ProjectileAnomalyFireballDrake
+    capacity: 10
+    count: 10       
+  - type: Gun
+    fireRate: 5
+    useKey: false
+    selectedMode: FullAuto
+    availableModes:
+      - FullAuto
+    soundGunshot: /Audio/Magic/fireball.ogg  #Звук кислоты   #Кислота     
+  - type: MeleeWeapon
+    soundHit:
+        path: /Audio/Weapons/Xeno/alien_claw_flesh3.ogg
+    angle: 0
+    animation: AttackLava
+    damage:
+      types:
+        Blunt: 35
+        Piercing: 15
+        Structural: 200 
+  - type: MobThresholds #ХП
+    thresholds:
+      0: Alive
+      650: Dead    
+  - type: AutoImplant
+    implants:
+    - LightImplantSpiderDrake 
+    - LightImplantSpiderDrakeOne
+    - LightImplantSpiderDrakeOne
+  - type: Destructible 
+    thresholds:
+      - trigger:
+          !type:DamageTrigger
+          damage: 650    
+        behaviors:
+        - !type:DoActsBehavior
+          acts: [ "Destruction" ]
+        - !type:SpawnEntitiesBehavior
+          spawn:
+            MaterialBones:
+              min: 1
+              max: 1
+            ArtifactFragment:
+              min: 3
+              max: 5
+            ClothingOuterArmorBoneBubblegum:
+              min: 0
+              max: 1
+            ClothingHeadHelmetBone:
+              min: 0
+              max: 1
+            LavaWeaponWandFireball:
+              min: 1
+              max: 1
+  - type: Bloodstream
+    bloodMaxVolume: 0
+    bloodReagent: Cryoxadone           
+  - type: Vocal 
+    sounds:
+      Male: UnisexDragon
+      Female: UnisexDragon
+      Unsexed: UnisexDragon
+
+- type: entity
+  parent: MobBubblegum
+  id: MobColossus 
+  name: Колосс
+  suffix: Лава, фауна
+  components:
+  - type: HTN
+    rootTask:
+      task: SimpleHumanoidHostileCompound
+  - type: Sprite
+    sprite: _KD/Lava/dragon.rsi
+    layers:
+      - state: eva
+        map: ["enum.DamageStateVisualLayers.Base"]
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: eva
+      Dead:
+        Base: eva
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 3.5
+    baseSprintSpeed: 3.5  
+  - type: RechargeBasicEntityAmmo #Кислота 
+    rechargeCooldown: 1.5
+  - type: BasicEntityAmmoProvider
+    proto: BulletKinetic
+    capacity: 3
+    count: 4       
+  - type: Gun
+    fireRate: 3
+    useKey: false
+    selectedMode: FullAuto
+    availableModes:
+      - FullAuto
+    soundGunshot: /Audio/Weapons/Guns/Gunshots/grenade_launcher.ogg  #Звук кислоты   #Кислота 
+  - type: MeleeWeapon
+    soundHit:
+        path: /Audio/Weapons/Xeno/alien_claw_flesh3.ogg
+    angle: 0
+    animation: AttackLava
+    damage:
+      types:
+        Blunt: 15
+        Piercing: 15
+        Structural: 70   
+  - type: MobThresholds #ХП
+    thresholds:
+      0: Alive
+      500: Dead
+  - type: Destructible 
+    thresholds:
+      - trigger:
+          !type:DamageTrigger
+          damage: 500    
+        behaviors:
+        - !type:DoActsBehavior
+          acts: [ "Destruction" ]
+        - !type:SpawnEntitiesBehavior
+          spawn:
+            ClothingNeckCloakHeraldBubblegum:
+              min: 1
+              max: 1
+            LavaRudaIvent:
+              min: 3
+              max: 5
+  - type: Bloodstream
+    bloodMaxVolume: 0
+    bloodReagent: Cryoxadone
+
+
+- type: entity
+  parent: MobBubblegum
+  id: MobDinosaurAnki
+  suffix: Лава, фауна
+  name: Легион
+  components:
+  - type: Sprite
+    sprite: _KD/Lava/empire.rsi
+    layers:
+      - state: mega_legion
+        map: ["enum.DamageStateVisualLayers.Base"]
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: mega_legion
+      Dead:
+        Base: eva_attack
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 4.5
+    baseSprintSpeed: 4.5  
+  - type: PointLight
+    radius: 0
+    energy: 0
+    color: "#ff4242"
+    castShadows: false  
+  - type: MobThresholds #ХП
+    thresholds:
+      0: Alive
+      500: Dead  
+  - type: MeleeWeapon
+    soundHit:
+        path: /Audio/Weapons/Xeno/alien_claw_flesh3.ogg
+    angle: 0
+    animation: AttackLava
+    damage:
+      types:
+        Blunt: 5
+        Structural: 200
+  - type: Destructible 
+    thresholds:
+      - trigger:
+          !type:DamageTrigger
+          damage: 500    
+        behaviors:
+        - !type:DoActsBehavior
+          acts: [ "Destruction" ]
+        - !type:SpawnEntitiesBehavior
+          spawn:
+            ClothingNeckCloakVoidLegion:
+              min: 1
+              max: 1
+            MobSalvageSpecialistCorpse:
+              min: 1
+              max: 1
+            LavaModifierLegion:
+              min: 1
+              max: 1
+            HealingToolboxKernel:
+              min: 1
+              max: 1
+            MobDinosaurAnkiMedium:
+              min: 2
+              max: 2
+  - type: AutoImplant
+    implants:
+    - LightImplantSpiderLegion     
+    - LightImplantSpiderLegionBig       
+  - type: RechargeBasicEntityAmmo #Кислота 
+    rechargeCooldown: 2
+  - type: BasicEntityAmmoProvider
+    proto: SpawnMobLegion
+    capacity: 1
+    count: 1       
+  - type: Gun
+    fireRate: 1
+    useKey: false
+    selectedMode: FullAuto
+    availableModes:
+      - FullAuto
+    soundGunshot: /Audio/lavaland/the-lava-bubble-gurgled.ogg   #Звук кислоты   #Кислота
+  - type: Bloodstream
+    bloodMaxVolume: 0
+    bloodReagent: Cryoxadone
+
+
+- type: entity
+  parent: MobFleshJaredSalvage #Череп
+  id: MobDinosaurAnkiSmallSmall
+  name: череп легиона
+  description: О боже оно бежит ко мне??!
+  suffix: Лава, фауна
+  components:
+  - type: Sprite
+    sprite: _KD/Lava/legion.rsi
+    layers:
+      - state: dragon
+        map: ["enum.DamageStateVisualLayers.Base"]
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: dragon
+      Dead:
+        Base: dragon
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 4.5
+    baseSprintSpeed: 4.5  
+  - type: PointLight
+    radius: 0
+    energy: 0
+    color: "#ff4242"
+    castShadows: false  
+  - type: MobThresholds #ХП
+    thresholds:
+      0: Alive
+      10: Dead  
+  - type: MeleeWeapon
+    soundHit:
+        path: /Audio/Weapons/Xeno/alien_claw_flesh3.ogg
+    angle: 0
+    animation: AttackLava
+    damage:
+      types:
+        Blunt: 3 
+  - type: TimedDespawn #Система цикла
+    lifetime: 4 
+  - type: Bloodstream
+    bloodMaxVolume: 0
+    bloodReagent: Cryoxadone     
+
+- type: entity
+  parent: MobXenoSpitter
+  id: MobDinosaurAnkiSmall
+  name: легион #Большой
+  description: Кто это?
+  suffix: Лава, фауна
+  components:
+  - type: Sprite
+    sprite: _KD/Lava/empire.rsi
+    layers:
+      - state: dragon
+        map: ["enum.DamageStateVisualLayers.Base"]
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: dragon
+      Dead:
+        Base: dragon_dead
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 3
+    baseSprintSpeed: 3  
+  - type: PointLight
+    radius: 0
+    energy: 0
+    color: "#ff4242"
+    castShadows: false  
+  - type: MobThresholds #ХП
+    thresholds:
+      0: Alive
+      75: Dead         
+  - type: MeleeWeapon
+    soundHit:
+        path: /Audio/Weapons/Xeno/alien_claw_flesh3.ogg
+    angle: 0
+    animation: AttackLava
+    damage:
+      types:
+        Blunt: 5  
+  - type: AutoImplant
+    implants:
+    - LightImplantSpiderLegion  
+  - type: TimedDespawn #Система цикла
+    lifetime: 360   
+  - type: RechargeBasicEntityAmmo #Кислота 
+    rechargeCooldown: 2
+  - type: BasicEntityAmmoProvider
+    proto: SpawnMobLegion
+    capacity: 1
+    count: 1       
+  - type: Gun
+    fireRate: 1
+    useKey: false
+    selectedMode: FullAuto
+    availableModes:
+      - FullAuto
+    soundGunshot: /Audio/lavaland/the-lava-bubble-gurgled.ogg #Звук кислоты   #Кислота   
+  - type: Destructible 
+    thresholds:
+      - trigger:
+          !type:DamageTrigger
+          damage: 0    
+        behaviors:
+        - !type:DoActsBehavior
+          acts: [ "Destruction" ]
+        - !type:SpawnEntitiesBehavior
+          spawn:
+            HealingToolboxKernel:
+              min: 1
+              max: 2
+            MobSalvageSpecialistCorpse:
+              min: 1
+              max: 1 
+  - type: PassiveDamage # Slight passive regen. Assuming one damage type, comes out to about 4 damage a minute.Самолечение
+    allowedStates:
+    - Alive
+    damageCap: 300
+    damage:
+      types:
+        Heat: -25
+      groups:
+        Brute: -1   
+        Toxin: -1
+        Airloss: -1
+        Burn: -10
+  - type: Bloodstream
+    bloodMaxVolume: 0
+    bloodReagent: Cryoxadone  
+
+- type: entity
+  name: Неизвестный 
+  parent: 
+  - MobLavaGostResident
+  - MobReptilian
+  suffix: Лава, Пеплоходец
+  id: MobCivilianInquisitorLava
+  description: Жалкая кучка тайн.
+  components:
+  - type: Eye
+    drawFov: false
+  - type: Stamina
+    critThreshold: 280
+  - type: BibleUser     
+  - type: InputMover
+  - type: MobMover
+  - type: Loadout
+    prototypes: [InquisitorGearReinforcementsLava]
+  - type: NpcFactionMember
+    factions:
+    - NanoTrasen
+  - type: Barotrauma #Урон от разгермы
+    damage:
+      types:
+        Blunt: 2 
+        Heat: 3 
+  - type: PassiveDamage 
+    allowedStates:
+    - Alive
+    damageCap: 300
+    damage:
+      types:
+        Heat: -4.5
+      groups:
+        Brute: -1.5   
+        Toxin: -1
+        Airloss: -1.5
+        Burn: -4.5
+
+- type: entity
+  name: Неизвестный 
+  parent: 
+  - MobLavaGostResident
+  - MobReptilian
+  id: MobCivilianInquisitorLavaShaman
+  description: Жалкая кучка тайн.
+  suffix: Шаман Пеплоходец
+  components:
+  - type: Eye
+    drawFov: false
+  - type: Stamina
+    critThreshold: 280
+  - type: BibleUser     
+  - type: InputMover
+  - type: MobMover
+  - type: Loadout
+    prototypes: [InquisitorGearReinforcementsLava]
+  - type: NpcFactionMember
+    factions:
+    - NanoTrasen
+  - type: Barotrauma #Урон от разгермы
+    damage:
+      types:
+        Blunt: 0.1 
+        Heat: 0.1 
+  - type: PassiveDamage # Slight passive regen. Assuming one damage type, comes out to about 4 damage a minute.Самолечение
+    allowedStates:
+    - Alive
+    damageCap: 300
+    damage:
+      types:
+        Heat: -5.5
+      groups:
+        Brute: -4.5   
+        Toxin: -2
+        Airloss: -4.5
+        Burn: -5.5  
+  - type: AutoImplant
+    implants:
+    - LightImplantSpiderResident
+
+- type: entity
+  parent: 
+  - MobFleshJaredSalvage
+  id: MobGoliath
+  name: голиаф 
+  description: Кто это?
+  components:
+  - type: Sprite
+    sprite: _KD/Lava/goliath.rsi
+    layers:
+      - state: dragon
+        map: ["enum.DamageStateVisualLayers.Base"]
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: dragon
+      Dead:
+        Base: dragon_dead
+  - type: PointLight
+    radius: 0
+    energy: 1
+    color: "#ff4242"
+    castShadows: false  
+  - type: MobThresholds #ХП 
+    thresholds:
+      0: Alive
+      300: Dead         
+  - type: Butcherable #Разделка 
+    spawned:
+      - id: MaterialBones1
+        amount: 1     
+      - id: FoodMeatGoliath
+        amount: 2         
+  - type: MeleeWeapon
+    soundHit:
+        path: /Audio/Weapons/Xeno/alien_claw_flesh3.ogg
+    angle: 0
+    animation: AttackLava
+    damage:
+      types:
+        Piercing: 10 
+        Blunt: 3 
+  - type: AutoImplant
+    implants:
+    - LightImplantSpiderLegion   
+  - type: TimedDespawn #Система цикла
+    lifetime: 600
+  - type: PassiveDamage # Slight passive regen. Assuming one damage type, comes out to about 4 damage a minute.Самолечение
+    allowedStates:
+    - Alive
+    damageCap: 300
+    damage:
+      types:
+        Heat: -25
+      groups:
+        Brute: -1   
+        Toxin: -1
+        Airloss: -1
+        Burn: -10 
+  - type: Bloodstream
+    bloodMaxVolume: 0
+    bloodReagent: Cryoxadone
+
+
+- type: entity
+  id: MobWatcherMagmawing
+  parent: MobWatcherBase
+  name: magmawing watcher
+  components:
+  - type: Sprite
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: base
+    - map: [ "enum.DamageStateVisualLayers.BaseUnshaded" ]
+      state: unshaded
+      shader: unshaded
+      color: orangered
+  - type: PointLight
+    radius: 1.5
+    energy: 1
+    color: orangered
+  - type: ProjectileBatteryAmmoProvider
+    proto: WatcherBoltMagmawing
+    fireCost: 50 
+  - type: TimedDespawn #Система цикла
+    lifetime: 360         
+    ignoreWhitelist: 
+  - type: MovementSpeedModifier #Скорость
+    baseWalkSpeed: 3
+    baseSprintSpeed: 3
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      75: Dead 
+  - type: Butcherable #Разделка 
+    spawned:
+      - id: MaterialWebSilk1
+        amount: 3  
+      - id: MaterialCotton1
+        amount: 4  
+  - type: Destructible
+    thresholds:
+      - trigger:
+          !type:DamageTrigger
+          damage: 110 
+  - type: Bloodstream
+    bloodMaxVolume: 0
+    bloodReagent: Cryoxadone  
