@@ -24,7 +24,6 @@
       - id: BoxEncryptionKeyCargo
       - id: AntiPsychicKnife # backmen
       - id: ClothingHeadCage # backmen
-      - id: PrinterDocFlatpack # Corvax-Printer
 
 - type: entity
   id: LockerCaptainFilledHardsuit
@@ -152,7 +151,6 @@
       - id: AccessConfigurator
       - id: AntiPsychicKnife  # backmen
       - id: ClothingHeadCage # backmen
-      - id: PrinterDocFlatpack # Corvax-Printer
 
 - type: entity
   id: LockerChiefEngineerFilledHardsuit
@@ -227,6 +225,7 @@
       - id: RubberStampCMO
       - id: MedicalTechFabCircuitboard
       - id: BoxEncryptionKeyMedical
+      - id: CompactDefibrillator
       - id: AntiPsychicKnife # backmen
       - id: ClothingHeadCage # backmen
       - id: MetempsychoticMachineCircuitboard # backmen
@@ -247,6 +246,7 @@
       - id: ClothingHeadsetAltMedical
       - id: ClothingBackpackDuffelSurgeryFilled
       - id: ClothingMaskSterile
+      - id: CompactDefibrillator
       - id: Hypospray
       - id: HandheldCrewMonitor
       - id: DoorRemoteMedical

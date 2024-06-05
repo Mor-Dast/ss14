@@ -1,0 +1,63 @@
+- type: statusIcon
+  parent: JobIcon
+  id: JobIconCCHeadOfSecurity
+  icon:
+    sprite: /Textures/Backmen/Icons/jobicon.rsi
+    state: Security
+
+- type: startingGear
+  id: HeadOfSecurityCentComGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCentcomMilitary
+    back: ClothingBackpackSecurityFilled
+    shoes: ClothingShoesBootsNedoSpetsnaz
+    mask: ClothingMaskGasSecurity
+    neck: CombatKnifeSpetsnaz
+    eyes: ClothingEyesGlassesSecurity
+    gloves: ClothingHandsGlovesCombat
+    outerClothing: ClothingOuterArmorBasic
+    suitstorage: WeaponPistolMk58
+    head: ClothingHeadHatBeretHoSCentcom
+    id: CCOfficerPDA
+    ears: ClothingHeadsetCentComCC
+    belt: ClothingBeltSecuritySuper
+    pocket2: MagazinePistol
+
+- type: entity
+  parent: OrdenPDA
+  id: CCOfficerPDA
+  name: Centcom Officer PDA
+  description: Black with green lines, sign of the walking protection of the bureaucracy.
+  components:
+    - type: Pda
+      id: IDCardCentComGavnaOfficerSesurity
+      state: pda-centcomsec
+      penSlot:
+        startingItem: PenCentcom
+        whitelist:
+          tags:
+            - Write
+    - type: PdaBorderColor
+      borderColor: "#5B5B5B"
+    - type: Icon
+      state: pda-centcomsec
+
+- type: entity
+  parent: CentcomIDCardDeathsquad
+  id: IDCardCentComGavnaOfficerSesurity
+  name: ID Начальника Безопасности ЦК
+  components:
+    - type: Sprite
+      layers:
+      - state: silver
+      - state: idsecurityofficer
+    - type: Item
+      heldPrefix: silver
+    - type: PresetIdCard
+      job: BKCCSecGavna
+    - type: Access
+      tags:
+        - CCSecurity
+        - CentralCommand
+      groups:
+        - AllAccess

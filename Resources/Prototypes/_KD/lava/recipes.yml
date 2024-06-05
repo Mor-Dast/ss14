@@ -1,0 +1,68 @@
+
+- type: construction
+  name: плащ голиафа
+  id: LavaGoliathRaincoat
+  graph: LavaGoliathRaincoat
+  startNode: start
+  targetNode: LavaGoliathRaincoat
+  category: Шахтёрство 
+  description: Плащ голиафа, сделанный из шкуры и мяса выносливой фауны с далёкой планеты. 
+  icon: { sprite: Clothing/Neck/Cloaks/goliathcloak.rsi, state: icon }
+  objectType: Item
+  
+- type: constructionGraph
+  id: LavaGoliathRaincoat
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: LavaGoliathRaincoat
+      steps:
+        - tag: FoodMeatGoliathCrafting
+          name: сырое мясо голиафа
+          icon:
+            sprite: Objects/Consumable/Food/meat.rsi
+            state: goliath        
+          doAfter: 1   
+        - tag: FoodMeatGoliathCrafting
+          name: сырое мясо голиафа
+          icon:
+            sprite: Objects/Consumable/Food/meat.rsi
+            state: goliath        
+          doAfter: 1 
+        - tag: FoodMeatGoliathCrafting
+          name: сырое мясо голиафа
+          icon:
+            sprite: Objects/Consumable/Food/meat.rsi
+            state: goliath        
+          doAfter: 1 
+        - tag: FoodMeatGoliathCrafting
+          name: сырое мясо голиафа
+          icon:
+            sprite: Objects/Consumable/Food/meat.rsi
+            state: goliath        
+          doAfter: 1 
+        - tag: FoodMeatGoliathCrafting
+          name: сырое мясо голиафа
+          icon:
+            sprite: Objects/Consumable/Food/meat.rsi
+            state: goliath        
+          doAfter: 1 
+        - tag: FoodMeatGoliathCrafting
+          name: сырое мясо голиафа
+          icon:
+            sprite: Objects/Consumable/Food/meat.rsi
+            state: goliath        
+          doAfter: 1 
+        - tag: FoodMeatGoliathCrafting
+          name: сырое мясо голиафа
+          icon:
+            sprite: Objects/Consumable/Food/meat.rsi
+            state: goliath        
+          doAfter: 1           
+        - material: Bones 
+          amount: 6
+          doAfter: 1      
+          
+  - node: LavaGoliathRaincoat
+    entity: ClothingNeckCloakGoliathGoliath

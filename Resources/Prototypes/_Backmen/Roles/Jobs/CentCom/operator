@@ -1,0 +1,34 @@
+- type: entity
+  parent: CentcomPDABackmen
+  id: CCOperatorPDA
+  name: Centcom Operator PDA
+  description: Light green sign of walking bureaucracy.
+  components:
+    - type: Pda
+      id: IDCardCentComGavnaOperator
+      state: pda-centcom
+      penSlot:
+        startingItem: PenCentcom
+        whitelist:
+          tags:
+            - Write
+    - type: PdaBorderColor
+      borderColor: "#00842e"
+    - type: Icon
+      state: pda-centcom
+
+- type: entity
+  parent: CentcomIDCardDeathsquad
+  id: IDCardCentComGavnaOperator
+  name: ID карта оператора ЦК
+  components:
+    - type: PresetIdCard
+      job: BKCCOperator
+    - type: Access
+      tags:
+        - CCCargo
+        - CCSecurity
+        - CentralCommand
+        - CCOfficer
+      groups:
+        - AllAccess

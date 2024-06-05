@@ -27,6 +27,24 @@
   equipment:
     jumpsuit: ClothingUniformJumpskirtCargo
 
+- type: loadout
+  id: DeliveryTechnicianJumpsuit
+  equipment: ClothingUniformJumpsuitDeliveryman
+
+- type: startingGear
+  id: DeliveryTechnicianJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitDeliveryman
+
+- type: loadout
+  id: DeliveryTechnicianJumpskirt
+  equipment: ClothingUniformJumpsuitDeliverygirl
+
+- type: startingGear
+  id: DeliveryTechnicianJumpskirt
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitDeliverygirl
+
 # Back
 - type: loadout
   id: CargoTechnicianBackpack

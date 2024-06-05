@@ -1,0 +1,39 @@
+- type: entity
+  id: ChemLaba
+  parent: Autolathe
+  name: Химическая лаборатория
+  description: Say me name!
+  components:
+  - type: Machine
+    board: ChemLabaMachineCircuitboard
+  - type: MaterialStorage
+    whitelist:
+      tags:
+        - Narco
+  - type: Lathe
+    idleState: icon
+    runningState: building
+    staticRecipes:
+      - PsiSeed
+
+- type: entity
+  id: ChemLabaMachineCircuitboard
+  parent: BaseMachineCircuitboard
+  name: плата химической лаборатории
+  components:
+  - type: Sprite
+    state: science
+  - type: MachineBoard
+    prototype: ChemLaba
+    requirements:
+      MatterBin: 2
+      Manipulator: 3
+    materialRequirements:
+      Glass: 10
+  - type: GuideHelp
+    guides:
+    - Robotics
+
+- type: Tag
+  id: Narco
+

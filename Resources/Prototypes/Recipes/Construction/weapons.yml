@@ -164,12 +164,12 @@
   objectType: Item
 
 - type: construction
-  name: bone spear
+  name: костяное копьё
   id: SpearBone
   graph: SpearBone
   startNode: start
   targetNode: spear
-  category: construction-category-weapons
-  description: Bones and silk combined together.
+  category: Шахтёрство 
+  description: Копьё, сделанное из костей.
   icon: { sprite: Objects/Weapons/Melee/bone_spear.rsi, state: spear }
-  objectType: Item
+  objectType: Item 

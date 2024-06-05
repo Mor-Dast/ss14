@@ -1,0 +1,323 @@
+#-------------------ВСЕ ВЫШЕ ЭТО СИСТЕМА АПЛИНКА!---------------------  
+#Наборы выше Содержимое
+
+- type: storeCategory  # категория 
+  id: LavaUplinkWearablesMagician
+  name: Основное #categories
+  priority: 1
+  
+#Коллекция выше
+
+- type: storePreset  # список доступных категорий
+  id: StorePresetUplinkMagician
+  storeName: Uplink
+  categories:
+  - LavaUplinkWearablesMagician
+  currencyWhitelist:
+  - LavaRudaIvent  
+  
+#Список выше
+  
+- type: entity #Сам аплинк
+  parent: BaseItem
+  id: LavaPhoneInstrument
+  name: терминал шахтёров
+  description: Винтажное радио?
+  suffix: Аплинк, Шахтёр, FraG
+  components:
+  - type: Sprite
+    sprite: Objects/Devices/communication.rsi
+    layers:
+    - state: old-radio
+  - type: Item
+    sprite: Objects/Devices/communication.rsi
+    heldPrefix: old-radio
+  - type: UserInterface
+    interfaces:
+      enum.StoreUiKey.Key:
+        type: StoreBoundUserInterface
+  - type: ActivatableUI
+    key: enum.StoreUiKey.Key
+  - type: Store
+    preset: StorePresetUplinkMagician
+    balance:
+      LavaRudaIvent: 0  #Количества ТК в аплинке
+  - type: EmitSoundOnLand
+    sound:
+       path: /Audio/Items/bikehorn.ogg
+  - type: Slippery
+    paralyzeTime: 4
+    launchForwardsMultiplier: 1.5
+  - type: StepTrigger
+  - type: CollisionWake
+    enabled: false
+  - type: Fixtures
+    fixtures:
+      slips:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.4,-0.3,0.4,0.3"
+        hard: false
+        layer:
+        - SlipLayer
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.4,-0.3,0.4,0.3"
+        density: 5
+        mask:
+        - ItemMask
+  - type: Prayable
+    sentMessage: prayer-popup-notify-honkmother-sent
+    notifiactionPrefix: prayer-chat-notify-honkmother
+    verb: prayer-verbs-call
+    verbImage: null      
+
+- type: currency
+  id: LavaRudaIvent
+  displayName: "Инфиритовых Кристалла"
+  cash: 
+    1: LavaRudaIvent
+  canWithdraw: true
+
+- type: entity
+  name: Инфиритовых Кристалла
+  parent: BaseItem
+  id: LavaRudaIvent
+  description: Кристалл, изученный научным департаментом НТ, имеет много применений.
+  components:
+  - type: Sprite
+    sprite: Objects/Misc/stock_parts.rsi
+    state: ansible_crystal
+  - type: Item
+    sprite: Objects/Misc/stock_parts.rsi
+    heldPrefix: ansible_crystal
+  - type: StackPrice
+    price: 200
+  - type: Currency
+    price:
+      LavaRudaIvent: 1   
+      
+#Выше Аплинк   
+#-------------------ВСЕ ВЫШЕ ЭТО СИСТЕМА АПЛИНКА!---------------------  
+#ТОВАРЫ В АПЛИНКЕ 
+
+- type: listing
+  id: ClothingOuterHardsuitLuxurySet #скаф
+  productEntity: ClothingOuterHardsuitLuxury
+  cost:
+    LavaRudaIvent: 10
+  categories:
+  - LavaUplinkWearablesMagician 
+  
+- type: listing
+  id: BoxCleanerGrenadesSet #Чист 
+  productEntity: BoxCleanerGrenades
+  cost:
+    LavaRudaIvent: 2
+  categories:
+  - LavaUplinkWearablesMagician   
+  
+- type: listing
+  id: DrinkMopwataBottleRandomSet #выпивка
+  productEntity: DrinkMopwataBottleRandom
+  cost:
+    LavaRudaIvent: 2
+  categories:
+  - LavaUplinkWearablesMagician   
+  
+
+- type: listing
+  id: BorgChassisMiningSet #Борг
+  productEntity: BorgChassisMining
+  cost:
+    LavaRudaIvent: 25
+  categories:
+  - LavaUplinkWearablesMagician 
+
+- type: listing
+  id: WeaponCrusherSet #Крушитель
+  productEntity: WeaponCrusher
+  cost:
+    LavaRudaIvent: 12
+  categories:
+  - LavaUplinkWearablesMagician 
+  
+- type: listing
+  id: WeaponCrusherGlaiveSet  #глефа-крушитель
+  productEntity: WeaponCrusherGlaive
+  cost:
+    LavaRudaIvent: 12
+  categories:
+  - LavaUplinkWearablesMagician   
+ 
+- type: listing
+  id: LavaClothingOuterHardsuitSpatioSet  # скафандр
+  name: буровой скафандр 
+  description: Более прочная броня, чем у максимального скафандра, обеспечивает 85% защиты от высоких температур, но при этом снижает скорость передвижения на 15% и обеспечивает лишь 35% защиты от колющих ударов (на планете Лавленд, где врагов, наносящих такие повреждения, мало).
+  productEntity: LavaClothingOuterHardsuitSpatio
+  cost:
+    LavaRudaIvent: 20
+  categories:
+  - LavaUplinkWearablesMagician
+  
+- type: listing
+  id: ClothingOuterHardsuitMaximSet #Максимальный скафандр 
+  name: максимальный скафандр
+  description: Имеет увеличенную защиту, а так же он не замедляет вас. 
+  productEntity: ClothingOuterHardsuitMaxim
+  cost:
+    LavaRudaIvent: 20
+  categories:
+  - LavaUplinkWearablesMagician   
+  
+- type: listing
+  id: MedkitFilledSet #Аптечка
+  productEntity: MedkitFilled
+  cost:
+    LavaRudaIvent: 4
+  categories:
+  - LavaUplinkWearablesMagician  
+  
+- type: listing
+  id: LavaBruteAutoInjectorSet #Омнизин
+  productEntity: LavaBruteAutoInjector
+  cost:
+    LavaRudaIvent: 6
+  categories:
+  - LavaUplinkWearablesMagician  
+  
+- type: listing
+  id: SpaceCash1000Set #деньги
+  productEntity: SpaceCash1000
+  cost:
+    LavaRudaIvent: 10
+  categories:
+  - LavaUplinkWearablesMagician 
+
+- type: listing
+  id: CigPackMixedMedicalSet #Сигареты
+  productEntity: CigPackMixedMedical
+  cost:
+    LavaRudaIvent: 2
+  categories:
+  - LavaUplinkWearablesMagician 
+  
+- type: listing
+  id: BoxMRESet #Паёк
+  productEntity: BoxMRE
+  cost:
+    LavaRudaIvent: 2
+  categories:
+  - LavaUplinkWearablesMagician   
+  
+- type: listing
+  id: ClothingBeltSalvageWebbingSet #РПС 
+  name: разгрузка исследователя
+  description: Можно использовать для хранения разных мелких предметов. Надевается в слот пояс. Позволяет хранить в себе инженерные инструменты, шахтёрские инструменты и принадлежности, некоторую добычу с фауны Лаваленда, медикаменты, руду и всякие безделушки.
+  productEntity: ClothingBeltSalvageWebbing
+  cost:
+    LavaRudaIvent: 8
+  categories:
+  - LavaUplinkWearablesMagician 
+  
+- type: listing
+  id: ClothingBackpackDuffelSalvageLavaSet 
+  name: набор Фултона
+  description: При установке обозначает пункт назначения для эвакуации предметов и людей с помощью шара Фултона.
+  productEntity: ClothingBackpackDuffelSalvageLava
+  cost:
+    LavaRudaIvent: 4
+  categories:
+  - LavaUplinkWearablesMagician   
+- type: entity
+  parent: ClothingBackpackDuffelSalvage 
+  id: ClothingBackpackDuffelSalvageLava
+  name: вещмешок шахтёра
+  description: Большой вещмешок для хранения дополнительных экзотических сокровищ.
+  suffix: FraG
+  components:
+    - type: StorageFill
+      contents:
+        - id: Fulton 
+        - id: FultonBeacon 
+
+- type: listing
+  id: JetpackBlueSet  
+  name: навесной джетпак
+  description: Джетпак, устанавливаемый в шахтёрский скафандр и позволяющий перемещаться в невесомости. Пользуется спросом у СБ и инженеров.
+  productEntity: JetpackVoidFilled
+  cost:
+    LavaRudaIvent: 9
+  categories:
+  - LavaUplinkWearablesMagician
+     
+- type: listing
+  id: Pickaxe2Set  
+  name: усовершенствованная кирка
+  description: Самая сильная кирка. Если вы не беситесь с жиру, то она вам ни к чему.
+  productEntity: Pickaxe2
+  cost:
+    LavaRudaIvent: 10
+  categories:
+  - LavaUplinkWearablesMagician     
+- type: entity
+  name: усовершенствованная кирка
+  parent: Pickaxe
+  id: Pickaxe2
+  description: Самая сильная кирка. Если вы не беситесь с жиру, то она вам ни к чему.
+  components:  
+  - type: MeleeWeapon
+    attackRate: 0.9
+    wideAnimationRotation: -300
+    soundHit:
+      path: "/Audio/Weapons/smash.ogg"
+      params:
+        volume: -4
+    damage:
+      groups:
+        Brute: 10  
+ 
+- type: listing
+  id: LavaDeathRattleImplanterSet  
+  name: имплант оповещения о смерти
+  description: Этот имплантат сообщит по радиоканалу снабжения, если пользователь попадет в критическое состояние или умрет.
+  productEntity: LavaDeathRattleImplanter
+  cost:
+    LavaRudaIvent: 3
+  categories:
+  - LavaUplinkWearablesMagician
+- type: entity
+  id: LavaDeathRattleImplanter
+  name: имплантер шахтёра
+  description: Имплантер шахтёра, предсмертвое оповещение. Этот имплантат сообщит по радиоканалу снабжения, если пользователь попадет в критическое состояние или умрет.
+  parent: BaseImplantOnlyImplanterSyndi
+  components:
+    - type: Implanter
+      implant: LavaDeathRattleImplant
+- type: entity
+  parent: BaseSubdermalImplant
+  id: LavaDeathRattleImplant
+  name: имплантер
+  description: Этот имплантат сообщит по радиоканалу снабжения, если пользователь попадет в критическое состояние или умрет.
+  noSpawn: true
+  components:
+    - type: SubdermalImplant
+      permanent: true
+      whitelist:
+        components:
+        - MobState # admeme implanting a chair with rattle implant needs to give the chair mobstate so it can die first
+    - type: TriggerOnMobstateChange
+      mobState:
+      - Critical
+      - Dead
+    - type: Rattle
+      radioChannel: Supply
+          
+- type: listing
+  id: LavaModifierSet  
+  productEntity: LavaModifier
+  cost:
+    LavaRudaIvent: 25
+  categories:
+  - LavaUplinkWearablesMagician

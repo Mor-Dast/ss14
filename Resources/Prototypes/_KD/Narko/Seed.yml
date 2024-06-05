@@ -1,0 +1,157 @@
+
+- type: seed
+  id: DimList
+  name: дымолист
+  noun: тест
+  displayName: дымолист
+  plantRsi: Radium/Objects/Specific/Hydroponics/coca.rsi
+  packetPrototype: DimSeed
+  productPrototypes: 
+    - DimFood
+  lifespan: 50
+  maturation: 7
+  production: 7
+  potency: 6
+  yield: 3
+  idealLight: 7
+  growthStages: 4
+  chemicals:
+    DimEkstract:
+      Min: 1
+      Max: 7
+      PotencyDivisor: 20
+
+- type: entity
+  parent: SeedBase
+  name: пакет семян (дымолист)
+  id: DimSeed
+  components:
+    - type: Seed
+      seedId: DimList
+    - type: Sprite
+      sprite: Radium/Objects/Specific/Hydroponics/coca.rsi
+    - type: Tag
+      tags:
+        - Narco
+
+- type: entity
+  name: дымолист
+  parent: FoodProduceBase
+  id: DimFood
+  description: С далёких планет, где дикари закуривали эту траву что бы раслабится.
+  components:
+  - type: FlavorProfile
+    flavors:
+      - leafy
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 11
+        reagents:
+        - ReagentId: DimEkstract
+          Quantity: 7
+  - type: Sprite
+    sprite: Radium/Objects/Specific/Hydroponics/coca.rsi
+  - type: Produce
+    seedId: DimList
+
+- type: entity
+  name: сушеный лист дымолиста
+  parent: BaseItem
+  id: LeavesDimFoodDried
+  description: "Dried cannabis dimolist, ready to be ground."
+  components:
+  - type: Stack
+    stackType: LeavesCannabisDried
+    count: 1
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: DimEkstract
+          Quantity: 6
+  - type: Sprite
+    sprite: Objects/Specific/Hydroponics/cannabis.rsi # Corvax-Resprite: Fix path
+    state: dried
+
+- type: entity
+  name: сушеный дымолист
+  parent: BaseItem
+  id: GroundDimFood
+  description: "Ground dimolist, ready to take you on a trip."
+  components:
+  - type: Stack
+    stackType: GroundCannabis
+    count: 1
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: DimEkstract
+          Quantity: 9
+  - type: Sprite
+    sprite: Objects/Misc/reagent_fillings.rsi
+    state: powderpile
+    color: darkgreen
+  - type: Construction
+    graph: smokeableGroundDim
+    node: ground
+  - type: Tag
+    tags:
+      - Smokable
+      - Narco
+  - type: Item
+    size: Tiny
+
+- type: seed
+  id: PsiList
+  name: психолист
+  noun: тест
+  displayName: психолист
+  plantRsi: Radium/Objects/Specific/Hydroponics/coca.rsi
+  packetPrototype: DimSeed
+  productPrototypes: 
+    - PsiFood
+  lifespan: 50
+  maturation: 7
+  production: 7
+  potency: 6
+  yield: 3
+  idealLight: 7
+  growthStages: 4
+  chemicals:
+    DimEkstract:
+      Min: 1
+      Max: 7
+      PotencyDivisor: 20
+
+- type: entity
+  parent: SeedBase
+  name: пакет семян (психолист)
+  id: PsiSeed
+  components:
+    - type: Seed
+      seedId: PsiList
+    - type: Sprite
+      sprite: Radium/Objects/Specific/Hydroponics/coca.rsi
+
+- type: entity
+  name: психолист
+  parent: FoodProduceBase
+  id: PsiFood
+  description: С далёких планет, где дикари закуривали эту траву что бы раслабится.
+  components:
+  - type: FlavorProfile
+    flavors:
+      - leafy
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 11
+        reagents:
+        - ReagentId: PsiEkstract
+          Quantity: 7
+  - type: Sprite
+    sprite: Radium/Objects/Specific/Hydroponics/coca.rsi
+  - type: Produce
+    seedId: DimList

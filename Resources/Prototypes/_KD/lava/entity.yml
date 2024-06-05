@@ -1,0 +1,418 @@
+- type: entity
+  parent: BasePDA
+  id: MinerPDA
+  name: КПК шахтёра
+  description: Наверняка владелец этого КПК любит пиво или абсент.
+  components:
+  - type: Pda
+    id: MinerIDCard
+    state: pda-miner
+  - type: PdaBorderColor
+    borderColor: "#201c16"
+    accentVColor: "#520078"
+  - type: Icon
+    state: pda-miner
+
+- type: entity
+  parent: IDCardStandard
+  id: MinerIDCard
+  name: ID карта
+  description: Карта, необходимая для доступа в различные области станции.
+  components:
+  - type: Sprite
+    layers:
+    - state: default
+    - state: idshaftminer
+  - type: PresetIdCard
+    job: MinerProfession
+
+- type: entity
+  parent: ClothingNeckCloakGoliathCloak
+  id: ClothingNeckCloakGoliathCloakHellspawn
+  name: плащ Бубльгума
+  description: Редкий трофей!
+  suffix: Лава, трофей
+  components:   
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.8 #Быстрая броня, но защита не лучшая.
+        Slash: 0.75
+        Piercing: 0.8
+        Heat: 0.65
+        Radiation: 0.9
+        Caustic: 0.9
+  - type: ClothingSpeedModifier
+    walkModifier: 0.8
+    sprintModifier: 0.8 
+  - type: PointLight
+    radius: 3
+    energy: 2.5
+    color: "#ff4242"
+    castShadows: false   
+
+- type: entity
+  parent: ClothingOuterArmorBone 
+  id: ClothingOuterArmorBoneBubblegum
+  name: доспех из костей дракона
+  description: Редкий трофей!
+  suffix: Лава, трофей
+  components:   
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.55 #Быстрая броня, но защита не лучшая.
+        Slash: 0.55
+        Piercing: 0.55
+        Heat: 0.25
+        Radiation: 0.9
+        Caustic: 0.9  
+
+- type: entity
+  parent: ClothingNeckCloakHerald
+  id: ClothingNeckCloakHeraldBubblegum
+  name: плащ Колосса
+  description: Редкий трофей!
+  suffix: Лава, трофей
+  components:   
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.9 #Быстрая броня, но защита не лучшая.
+        Slash: 0.9
+        Piercing: 0.9
+        Heat: 0.8
+        Radiation: 0.8
+        Caustic: 0.8 
+  - type: ClothingSpeedModifier
+    walkModifier: 1.15
+    sprintModifier: 1.15
+  - type: PointLight
+    radius: 3
+    energy: 2.5
+    color: "#ff4242"
+    castShadows: false
+
+
+- type: entity
+  parent: ClothingNeckCloakVoid
+  id: ClothingNeckCloakVoidLegion
+  name: плащ легиона
+  suffix: Лава, трофей
+  description: Редкий трофей!
+  components:
+  - type: ClothingSpeedModifier
+    walkModifier: 1.3
+    sprintModifier: 1.3
+  - type: PointLight
+    radius: 3
+    energy: 2.5
+    color: "#ff4242"
+    castShadows: false
+
+- type: entity
+  parent: BaseHealingItem
+  id: HealingToolboxKernel
+  name: ядро легиона
+  description: В то время как ядро может быть использованы для лечения грубых и ожоговых повреждений, причина, по которой они так важны, заключается в том, что они могут исцелять сломанные кости и внутреннее кровотечение. Способность лечения пропадает через 5 минут!
+  components:
+  - type: Sprite
+    sprite: _KD/Lava/healing_toolbox.rsi
+    state: icon
+  - type: Healing
+    damageContainers:
+    - Biological
+    damage:
+      groups: # these are all split across multiple types
+        Brute: -100
+        Burn: -100
+        Toxin: -100
+    bloodlossModifier: -20
+    delay: 1
+    selfHealPenaltyMultiplier: 0
+    healingBeginSound:
+      path: "/Audio/Items/Medical/ointment_begin.ogg"
+    healingEndSound:
+      path: "/Audio/Items/Medical/ointment_end.ogg" 
+  - type: PointLight
+    radius: 2
+    energy: 0.2
+    color: "#ff4242"
+    castShadows: false
+  - type: Tag
+    tags:
+    - HealingToolboxKernelCrafting
+
+
+- type: entity
+  name: raw goliath meat
+  parent: FoodMeatRawBase
+  id: FoodMeatGoliath
+  description: A slab of goliath meat. It's not very edible now, but it cooks great in lava.
+  components:
+  - type: Sprite
+    state: goliath
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: UncookedAnimalProteins
+          Quantity: 5
+        - ReagentId: Fat
+          Quantity: 3
+  - type: InternalTemperature
+    thickness: 0.1 # very big, do cook it in lava
+  - type: Construction
+    graph: GoliathSteak
+    node: start
+    defaultTarget: goliath steak  
+  - type: Tag
+    tags:
+    - FoodMeatGoliathCrafting      
+  - type: StaticPrice
+    price: 350
+
+
+- type: entity
+  parent: MicroManipulatorStockPart
+  id: LavaModifier
+  name: модуль усовершенствования
+  description: Улучшает оружие шахтеров. Например протокинетический ускоритель.
+  suffix: FraG
+  components:
+  - type: Sprite
+    sprite: _KD/Lava/modifier.rsi
+    state: icon
+  - type: Construction
+    graph: GhostSheet
+    node: ghost_sheet 
+  - type: Tag
+    tags:
+    - LavaModifierCrafting 
+
+- type: entity
+  parent: ClothingOuterHardsuitBase
+  id: LavaClothingOuterHardsuitSpatio
+  name: буровой скафандр утилизатора
+  description: Бронированный скафандр, предназначенный для шахтёров на Лаваленде.
+  suffix: FraG
+  components:
+  - type: Sprite
+    sprite: _KD/Lava/spatio.rsi
+  - type: Clothing
+    sprite: _KD/Lava/spatio.rsi
+  - type: PressureProtection
+    highPressureMultiplier: 0.7
+    lowPressureMultiplier: 1000
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.55
+        Slash: 0.55
+        Piercing: 0.65
+        Heat: 0.15
+        Radiation: 0.3 #salv is supposed to have radiation hazards in the future
+        Caustic: 0.3
+  - type: ClothingSpeedModifier
+    walkModifier: 0.95
+    sprintModifier: 0.85
+  - type: HeldSpeedModifier
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHelmetHardsuitMaxim    
+    
+#УСКОРИТЕЛЬ
+- type: entity
+  name: боевой протокинетический ускоритель
+  id: LavaWeaponProtoKineticAccelerator
+  parent: WeaponProtoKineticAcceleratorBase
+  description: Стреляет кинетическими зарядами с низким уроном на короткое расстояние. Имеет увеличенный боекомплект — 2 снаряда, а также более высокую скорострельность, но при этом более медленную перезарядку.
+  suffix: FraG  
+  components:
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Basic/kinetic_accelerator.rsi
+    layers:
+    - state: icon
+    - state: animation-icon
+      visible: false
+      map: [ "empty-icon" ]
+  - type: RechargeBasicEntityAmmo
+    rechargeCooldown: 1.5
+    rechargeSound:
+      path: /Audio/Weapons/Guns/MagIn/kinetic_reload.ogg      
+  - type: BasicEntityAmmoProvider
+    proto: BulletKinetic
+    capacity: 2
+    count: 2
+  - type: Gun
+    fireRate: 2.5
+    selectedMode: SemiAuto
+    angleDecay: 45
+    minAngle: 44
+    maxAngle: 45
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/kinetic_accel.ogg   
+  - type: Construction
+    graph: LavaKinetic1
+    node: upgraded
+  - type: Tag
+    tags:
+    - LavaWeaponProtoKineticAccelerator    
+      
+- type: entity
+  name: proto-kinetic accelerator
+  id: WeaponProtoKineticAccelerator
+  parent: WeaponProtoKineticAcceleratorBase
+  description: Fires low-damage kinetic bolts at a short range.
+  components:
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Basic/kinetic_accelerator.rsi
+    layers:
+    - state: icon
+    - state: animation-icon
+      visible: false
+      map: [ "empty-icon" ]  
+  - type: Construction
+    graph: LavaKinetic1
+    node: start
+  - type: Tag
+    tags:
+    - WeaponProtoKineticAcceleratorCrafting       
+
+#МЕДИПЕН
+- type: entity
+  name: автоинъектор от повреждений
+  parent: BruteAutoInjector
+  id: LavaBruteAutoInjector
+  description: Экспресс-доза омнизина, предназначенная для применения в боевых условиях.
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      pen:
+        maxVol: 20
+        reagents:
+        - ReagentId: Omnizine
+          Quantity: 20
+  - type: Tag
+    tags: [] 
+      
+#ЩИПЫ    
+    
+- type: entity
+  name: Шип Некрополя
+  description: Порождение некрополя, шип из разложившейся плоти пробившийся наружу из самых недр Лаваленда дабы дать жизнь бесчисленному множеству чудовищ.
+  parent: BaseWeaponTurret
+  id: TurretPliersGoliath
+  suffix: Голиаф
+  components:
+    - type: NpcFactionMember
+      factions:
+        - Xeno
+    - type: Sprite
+      sprite: _KD/Lava/pliers.rsi
+      noRot: true
+      layers:
+        - state: state1
+    - type: BallisticAmmoProvider
+      proto: SpawnMobGoliath
+      capacity: 400
+    - type: Gun
+      fireRate: 0.15
+      selectedMode: FullAuto
+      soundGunshot: /Audio/lavaland/the-lava-bubble-gurgled.ogg
+    - type: HTN
+      rootTask:
+        task: TurretCompound
+      blackboard:
+        SoundTargetInLOS: !type:SoundPathSpecifier
+          path: /Audio/Animals/snake_hiss.ogg
+    - type: Damageable
+      damageContainer: Biological
+    - type: Destructible
+      thresholds:
+        - trigger:
+            !type:DamageTrigger
+            damage: 400
+          behaviors:
+            - !type:DoActsBehavior
+              acts: [ "Destruction" ]
+            - !type:PlaySoundBehavior
+              sound:
+                path: /Audio/Effects/gib1.ogg
+            - !type:SpawnEntitiesBehavior
+              spawn:
+                NecrocrateopenRandom:
+                  min: 1
+                  max: 1                  
+    - type: InteractionPopup
+      interactDelay: 1.0
+      successChance: 0.8
+      interactSuccessString: petting-success-generic
+      interactFailureString: petting-failure-generic
+      interactSuccessSound:
+        path: /Audio/Animals/snake_hiss.ogg  
+
+- type: entity
+  name: Шип Некрополя
+  description: Порождение некрополя, шип из разложившейся плоти пробившийся наружу из самых недр Лаваленда дабы дать жизнь бесчисленному множеству чудовищ.
+  parent: TurretPliersGoliath
+  id: TurretPliersMagmawing
+  suffix: Наблюдатель,FraG,фауна
+  components:   
+    - type: BallisticAmmoProvider
+      proto: SpawnMobWatcherMagmawing
+      capacity: 500
+      
+- type: entity
+  name: Шип Некрополя
+  description: Порождение некрополя, шип из разложившейся плоти пробившийся наружу из самых недр Лаваленда дабы дать жизнь бесчисленному множеству чудовищ.
+  parent: TurretPliersGoliath
+  id: TurretPliersLegion
+  components:   
+    - type: BallisticAmmoProvider
+      proto: SpawnMobDinosaurAnkiSmall
+      capacity: 500
+
+- type: entity
+  name: палочка огненного шара
+  parent: WeaponWandBase
+  id: LavaWeaponWandFireball
+  description: Огромные огненные шары! Удивительно, но для использования этого посоха достаточно навыков стрельбы!
+  components:
+  - type: Sprite
+    layers:
+    - state: fire
+    - state: fire-effect
+      map: ["effect"]
+  - type: Gun
+    fireRate: 4
+    soundGunshot:
+      path: /Audio/Magic/fireball.ogg
+  - type: BasicEntityAmmoProvider
+    proto: ProjectileAnomalyFireballDrake
+    capacity: 10
+    count: 10 
+  - type: RechargeBasicEntityAmmo
+    rechargeCooldown: 10
+
+- type: entity
+  parent: ClothingNeckCloakGoliathCloak
+  id: ClothingNeckCloakGoliathGoliath
+  name: плащ голиафа
+  description: Плащ голиафа, сделанный из шкуры и мяса выносливой фауны с далёкой планеты. 
+  suffix: Лава, трофей
+  components: 
+  - type: Construction
+    graph: LavaGoliathRaincoat
+    node: ghost_sheet 
+  - type: Tag
+    tags:
+    - ClothingNeckCloakGoliathGoliath
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.95 #Быстрая броня, но защита не лучшая.
+        Slash: 0.95
+        Heat: 0.85
+

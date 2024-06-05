@@ -34,6 +34,7 @@
   - ClothingNeckEarthPin
   - ClothingNeckUSSPPin
   - ClothingNeckSyndicakePin #BackmenPins-end
+  - ClothingHeadHatSyndie
 
 - type: loadoutGroup
   id: Glasses
@@ -162,6 +163,8 @@
   minLimit: 0
   loadouts:
   - PassengerWintercoat
+  - ClothingOuterCoatExpensive
+  - ClothingOuterCoatSpaceAsshole
 
 - type: loadoutGroup
   id: PassengerShoes

@@ -1,0 +1,56 @@
+- type: entity
+  id: CompactDefibrillator
+  parent: Defibrillator
+  name: компакный дефибрилятор
+  description: Модные часы так еще и жизнь спасает!
+  components:
+  - type: Sprite
+    sprite: /_KD/CompactDefib/compactdefib.rsi
+    layers:
+    - state: icon
+    - state: screen
+      map: [ "enum.ToggleVisuals.Layer" ]
+      visible: false
+      shader: unshaded
+    - state: ready
+      map: [ "enum.PowerDeviceVisualLayers.Powered" ]
+      shader: unshaded
+  - type: Clothing
+    slots: [gloves]
+  - type: Item
+    size: Small
+  - type: Defibrillator
+    zapHeal:
+      types:
+        Asphyxiation: -75
+  - type: PowerCellDraw
+    useRate: 300
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellCompactDefib
+        disableEject: true
+
+- type: entity
+  name: батарейка компактного дефибрилятора
+  description: Маленькая батарейка для очень полезной вещи.
+  id: PowerCellCompactDefib
+  parent: BasePowerCell
+  components:
+    - type: Sprite
+      layers:
+      - map: [ "enum.PowerCellVisualLayers.Base" ]
+        state: antique
+      - map: [ "enum.PowerCellVisualLayers.Unshaded" ]
+        state: o2
+        shader: unshaded
+    - type: Battery
+      maxCharge: 900
+      startingCharge: 1000
+    - type: Item
+      size: Tiny
+    - type: BatterySelfRecharger
+      autoRecharge: true
+      autoRechargeRate: 5
+

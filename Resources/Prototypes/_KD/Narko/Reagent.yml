@@ -1,0 +1,85 @@
+
+- type: reagent
+  id: DimEkstract
+  name: Экстракт дымалиста
+  group: Narcotics
+  desc: Чуть более чистый и приятный никотин
+  flavor: bitter
+  flavorMinimum: 0.05
+  color: "#808080"
+  physicalDesc: reagent-physical-desc-crystalline
+  plantMetabolism:
+  - !type:PlantAdjustHealth
+    amount: +1
+  metabolisms:
+    Narcotic:
+      effects:
+      - !type:GenericStatusEffect
+        key: SeeingRainbows
+        component: SeeingRainbows
+        type: Add
+        time: 2
+        refresh: false
+
+- type: reagent
+  id: PsiEkstract
+  name: Психин
+  group: Narcotics
+  desc: Лучший товар, от лучших поставщиков
+  flavor: bitter
+  flavorMinimum: 0.05
+  color: "#808080"
+  physicalDesc: reagent-physical-desc-crystalline
+  plantMetabolism:
+  - !type:PlantAdjustHealth
+    amount: -1
+  metabolisms:
+    Narcotic:
+      effects:
+      - !type:GenericStatusEffect
+        key: SeeingRainbows
+        component: SeeingRainbows
+        type: Add
+        time: 2
+        refresh: false
+
+
+- type: reagent
+  id: Luc
+  name: Люцеферин
+  group: Narcotics
+  desc: Жоская херня
+  physicalDesc: Жоская херня
+  flavor: bitter
+  color: "#FAFAFA"
+  boilingPoint: 212.0  # Dexosyephedrine vape when?
+  meltingPoint: 170.0
+  metabolisms:
+    Narcotic:
+      effects:
+      - !type:MovespeedModifier
+        walkSpeedModifier: 1.4
+        sprintSpeedModifier: 1.4
+      - !type:GenericStatusEffect
+        key: Stutter
+        component: StutteringAccent
+      - !type:GenericStatusEffect
+        key: Stun
+        time: 10
+        type: Remove
+      - !type:GenericStatusEffect
+        key: KnockedDown
+        time: 10
+        type: Remove
+      - !type:GenericStatusEffect
+        key: SeeingRainbows
+        component: SeeingRainbows
+        type: Add
+        time: 5
+        refresh: false
+    Medicine:
+      effects:
+      - !type:ResetNarcolepsy
+        conditions:
+        - !type:ReagentThreshold
+          min: 20

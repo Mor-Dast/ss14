@@ -1,0 +1,43 @@
+- type: entity
+  name: чистый кристалик мета
+  parent: FoodBase
+  id: MethCristall
+  components:
+  - type: Food
+  - type: Tag
+    tags:
+      - FoodSnack
+      - Narco
+  - type: Sprite
+    sprite: Objects/Consumable/Food/snacks.rsi
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 30 
+        reagents:
+        - ReagentId: Desoxyephedrine
+          Quantity: 10
+  - type: Item
+    sprite: Objects/Consumable/Food/snacks.rsi
+    size: Tiny
+  - type: StaticPrice
+    price: 5000
+
+- type: entity
+  id: JointDimolist
+  parent: Joint
+  name: косяк
+  description: Племена любят эту штучку.
+  components:
+  - type: Construction
+    graph: smokeableJointDimolist
+    node: joint
+  - type: SolutionContainerManager
+    solutions:
+      smokable:
+        maxVol: 30
+        reagents:
+          - ReagentId: DimEkstract
+            Quantity: 20
+  - type: StaticPrice
+    price: 500
