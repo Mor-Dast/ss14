@@ -1,5 +1,5 @@
 - type: construction
-  name: clown hardsuit
+  name: Скафандр клоуна
   id: ClownHardsuit
   graph: ClownHardsuit
   startNode: start
@@ -10,7 +10,7 @@
   objectType: Item
 
 - type: construction
-  name: mime hardsuit
+  name: Скафандр мима
   id: MimeHardsuit
   graph: MimeHardsuit
   startNode: start
@@ -19,31 +19,9 @@
   description: A modified hardsuit fit for a mime.
   icon: { sprite: Clothing/OuterClothing/Hardsuits/mime.rsi, state: icon }
   objectType: Item
-
-- type: construction
-  name: �������� ������
-  id: BoneArmor
-  graph: BoneArmor
-  startNode: start
-  targetNode: armor
-  category: ��������� 
-  description: ����� �� ��� ��� ������ ����.
-  icon: { sprite: Clothing/OuterClothing/Armor/bone_armor.rsi, state: icon }
-  objectType: Item 
- 
-- type: construction
-  name: �������� ����
-  id: BoneHelmet
-  graph: BoneHelmet
-  startNode: start
-  targetNode: helmet
-  category: ��������� 
-  description: ����� ���������� ����, ��������� �� ������� ����� ������.
-  icon: { sprite: Clothing/Head/Helmets/bone_helmet.rsi, state: icon }
-  objectType: Item  
   
 - type: construction
-  name: banana clown mask
+  name: Бананиумовая маска клоуна
   id: BananaClownMask
   graph: BananaClownMask
   startNode: start
@@ -54,7 +32,7 @@
   objectType: Item
 
 - type: construction
-  name: banana clown suit
+  name: Бананиумовый костюм клоуна
   id: BananaClownJumpsuit
   graph: BananaClownJumpsuit
   startNode: start
@@ -65,7 +43,7 @@
   objectType: Item
 
 - type: construction
-  name: banana clown shoes
+  name: Бананиумовые туфли клоуна
   id: BananaClownShoes
   graph: BananaClownShoes
   startNode: start
@@ -76,7 +54,7 @@
   objectType: Item
 
 - type: construction
-  name: medsec hud
+  name: МедСБ худ
   id: ClothingEyesHudMedSec
   graph: HudMedSec
   startNode: start
@@ -87,7 +65,7 @@
   objectType: Item
 
 - type: construction
-  name: ducky slippers
+  name: Уточки тапочки
   id: ClothingShoeSlippersDuck
   graph: ClothingShoeSlippersDuck
   startNode: start
@@ -98,7 +76,7 @@
   objectType: Item
 
 - type: construction
-  name: security glasses
+  name: Очки СБ
   id: ClothingEyesGlassesSecurity
   graph: GlassesSecHUD
   startNode: start
@@ -109,7 +87,7 @@
   objectType: Item
 
 - type: construction
-  name: quiver
+  name: Колчан
   id: ClothingBeltQuiver
   graph: Quiver
   startNode: start
@@ -118,3 +96,25 @@
   description: Can hold up to 15 arrows, and fits snug around your waist.
   icon: { sprite: Clothing/Belt/quiver.rsi, state: icon }
   objectType: Item
+
+- type: construction
+  name: Костяной доспех
+  id: BoneArmor
+  graph: BoneArmor
+  startNode: start
+  targetNode: armor
+  category: Шахтёрство 
+  description: Сидит на вас как вторая кожа.
+  icon: { sprite: Clothing/OuterClothing/Armor/bone_armor.rsi, state: icon }
+  objectType: Item 
+ 
+- type: construction
+  name: Костяной шлем
+  id: BoneHelmet
+  graph: BoneHelmet
+  startNode: start
+  targetNode: helmet
+  category: Шахтёрство 
+  description: Круто выглядящий шлем, сделанный из черепов ваших врагов.
+  icon: { sprite: Clothing/Head/Helmets/bone_helmet.rsi, state: icon }
+  objectType: Item  

@@ -5,7 +5,7 @@
   playTimeTracker: JobQuartermaster
   requirements:
     - !type:OverallPlaytimeRequirement
-      time: 6000
+      time: 600
   weight: 10
   startingGear: QuartermasterGear
   icon: "JobIconQuarterMaster"

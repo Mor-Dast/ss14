@@ -1,4 +1,4 @@
-- type: entity #РЈРґР°СЂ СЃ Р°РЅРёРј.
+- type: entity
   id: AttackLava
   parent: WeaponArcStatic
   noSpawn: true
@@ -31,8 +31,8 @@
 - type: entity
   parent: BaseSubdermalImplant
   id: LavaLightImplant
-  name: РЎРІРµС‚.
-  description: РЈРєР°Р·С‹РІР°РµС‚ РІР°Рј РїСѓС‚СЊ.
+  name: Свет.
+  description: Указывает вам путь.
   noSpawn: true
   components:
     - type: SubdermalImplant
@@ -54,7 +54,7 @@
 
 - type: entity
   id: LavaLightImplanter
-  name: РЎРІРµС‚.
+  name: Свет.
   parent: BaseImplantOnlyImplanter
   components:
     - type: Implanter
@@ -62,16 +62,16 @@
 
 
 - type: entity
-  id: SpiderWebUsual #РџР°СѓС‚РёРЅР° Р±РµР· С€РµР»РєР°. 
-  name: РєР°РїРєР°РЅ
-  description: Р›РѕРІСѓС€РєР°!
+  id: SpiderWebUsual #Паутина без шелка. 
+  name: капкан
+  description: Ловушка!
   parent: SpiderWeb 
   placement:
     mode: SnapgridCenter
     snap:
       - Wall
   components:
-    - type: TimedDespawn #РЎРёСЃС‚РµРјР° С†РёРєР»Р°
+    - type: TimedDespawn #Система цикла
       lifetime: 5         
       ignoreWhitelist:
         components:
@@ -134,7 +134,7 @@
         Flammable: [Touch]
         Extinguish: [Touch]
     - type: SpiderWebObject
-    - type: SpeedModifierContacts #Р—Р°РјРµРґР»РµРЅРёРµ РїР°СѓС‚РёРЅС‹
+    - type: SpeedModifierContacts #Замедление паутины
       walkSpeedModifier: 0.3
       sprintSpeedModifier: 0.3
       ignoreWhitelist:
@@ -142,8 +142,8 @@
             - IgnoreSpiderWeb
 
 - type: entity
-  id: ActionSpawnMagicarpBubblegum #Р—Р°РєР»РёРЅР°РЅРёРµ РїСЂРёР·С‹РІР° Р»Р°РІС‹ 1
-  name: Р—Р°РјРµРґР»РёС‚СЊ РІСЂР°РіР°.
+  id: ActionSpawnMagicarpBubblegum #Заклинание призыва лавы 1
+  name: Замедлить врага.
   noSpawn: true
   components:
   - type: WorldTargetAction
@@ -158,12 +158,12 @@
       - id: SpiderWebUsual
         amount: 1
       offset: 0, 1
-      speech: РљСЃСЃСЃ...!??
+      speech: Кссс...!??
 
 - type: entity
-  parent: BaseSubdermalImplant #РЎР°Рј РёРјРїР»Р°РЅС‚ 
+  parent: BaseSubdermalImplant #Сам имплант 
   id: LightImplantSpiderBubblegum
-  name: Р—Р°РјРµРґР»РёС‚СЊ РІСЂР°РіР°.
+  name: Замедлить врага.
   description: 
   noSpawn: true
   components:
@@ -171,13 +171,13 @@
       implantAction: ActionSpawnMagicarpBubblegum
 
 - type: entity
-  id: ActionSpawnMagicarpBubblegumRune #Р—Р°РєР»РёРЅР°РЅРёРµ РїСЂРёР·С‹РІР° Р»Р°РІС‹ 1
-  name: РЎРѕР·РґР°С‚СЊ СЂСѓРЅСѓ РІРѕСЃРїР»Р°РјРµРЅРµРЅРёСЏ
-  description: РЎРѕР·РґР°РµС‚ СЂСѓРЅСѓ РІРѕСЃРїР»Р°РјРµРЅРёРЅРёСЏ, РєРѕС‚РѕСЂР°СЏ РїСЂРѕРїР°РґР°РµС‚ С‡РµСЂРµР· 15 СЃРµРєСѓРЅРґ.
+  id: ActionSpawnMagicarpBubblegumRune #Заклинание призыва лавы 1
+  name: Создать руну воспламенения
+  description: Создает руну воспламениния, которая пропадает через 15 секунд.
   noSpawn: true
   components:
   - type: WorldTargetAction
-    useDelay: 25 #РљР”
+    useDelay: 25 #КД
     range: 8
     itemIconStyle: BigAction
     icon:
@@ -188,33 +188,33 @@
       - id: IgniteRuneRune
         amount: 1
       offset: 0, 1
-      speech: РљСЃСЃСЃ...!??
+      speech: Кссс...!??
 
 - type: entity
-  parent: BaseSubdermalImplant #РЎР°Рј РёРјРїР»Р°РЅС‚ 
+  parent: BaseSubdermalImplant #Сам имплант 
   id: LightImplantSpiderBubblegumRune
-  name: РЎРѕР·РґР°С‚СЊ СЂСѓРЅСѓ РІРѕСЃРїР»Р°РјРµРЅРµРЅРёСЏ
-  description: РЎРѕР·РґР°РµС‚ СЂСѓРЅСѓ РІРѕСЃРїР»Р°РјРµРЅРёРЅРёСЏ, РєРѕС‚РѕСЂР°СЏ РїСЂРѕРїР°РґР°РµС‚ С‡РµСЂРµР· 15 СЃРµРєСѓРЅРґ.
+  name: Создать руну воспламенения
+  description: Создает руну воспламениния, которая пропадает через 15 секунд.
   noSpawn: true
   components:
     - type: SubdermalImplant
-      implantAction: ActionSpawnMagicarpBubblegumRune      #РЎСѓРґР° Р·Р°РєР»РёРЅР°РЅРёРµ 
+      implantAction: ActionSpawnMagicarpBubblegumRune      #Суда заклинание 
 
 - type: entity
   parent: IgniteRune 
   id: IgniteRuneRune
-  name: СЂСѓРЅР° РІРѕСЃРїР»Р°РјРµРЅРµРЅРёСЏ
+  name: руна воспламенения
   description: 
   noSpawn: true
   components:
-    - type: TimedDespawn #РЎРёСЃС‚РµРјР° С†РёРєР»Р°
+    - type: TimedDespawn #Система цикла
       lifetime: 15         
       ignoreWhitelist:
 
 - type: entity
   id: ActionBlinkBubblegumJump
-  name: Р Р°Р·Р±РµРі. 
-  description: Р’С‹ СЂР°Р·Р±РµРіР°РµС‚РµСЃСЊ СЃРѕ СЃРєРѕСЂРѕСЃС‚СЊСЋ СЃРІРµС‚Р° РІ РѕРїСЂРµРґРµР»РµРЅРЅСѓСЋ С‚РѕС‡РєСѓ.
+  name: Разбег. 
+  description: Вы разбегаетесь со скоростью света в определенную точку.
   noSpawn: true
   components:
   - type: WorldTargetAction
@@ -229,10 +229,10 @@
     event: !type:TeleportSpellEvent
     
 - type: entity
-  parent: BaseSubdermalImplant #РЎР°Рј РёРјРїР»Р°РЅС‚ 
+  parent: BaseSubdermalImplant #Сам имплант 
   id: LightImplantSpiderActionBlinkBubblegumJump
-  name: Р Р°Р·Р±РµРі. 
-  description: Р’С‹ СЂР°Р·Р±РµРіР°РµС‚РµСЃСЊ СЃРѕ СЃРєРѕСЂРѕСЃС‚СЊСЋ СЃРІРµС‚Р° РІ РѕРїСЂРµРґРµР»РµРЅРЅСѓСЋ С‚РѕС‡РєСѓ.
+  name: Разбег. 
+  description: Вы разбегаетесь со скоростью света в определенную точку.
   noSpawn: true
   components:
     - type: SubdermalImplant
@@ -240,8 +240,8 @@
 
 - type: entity 
   id: WoodenSupportBubblegum
-  name: РЎС‚РµРЅР°!
-  description: РЈР±РµРіР°Р№!
+  name: Стена!
+  description: Убегай!
   parent: WoodenSupport
   components:
   - type: Sprite
@@ -259,7 +259,7 @@
         layer:
         - WallLayer
         density: 1000 
-  - type: TimedDespawn #РЎРёСЃС‚РµРјР° С†РёРєР»Р°
+  - type: TimedDespawn #Система цикла
     lifetime: 8
   - type: SpawnOnDespawn
     prototype: FloorLavaEntityBubblegum
@@ -267,20 +267,20 @@
 
 - type: entity 
   id: FloorLavaEntityBubblegum
-  name: РјСЏСЃРЅР°СЏ СЃС‚РµРЅР°
-  description: Р›РёРїРєРѕ!
+  name: мясная стена
+  description: Липко!
   parent: WallMeat 
   components:
   - type: TimedDespawn 
     lifetime: 8  
 
 - type: entity
-  id: ActionSpawnMagicarpBubblegumWall  #Р—Р°РєР»РёРЅР°РЅРёРµ РїСЂРёР·С‹РІР° Р»Р°РІС‹ 1
-  name: РЎРѕР·РґР°С‚СЊ СЃС‚РµРЅСѓ.
+  id: ActionSpawnMagicarpBubblegumWall  #Заклинание призыва лавы 1
+  name: Создать стену.
   noSpawn: true
   components:
   - type: WorldTargetAction
-    useDelay: 8 #РљР”
+    useDelay: 8 #КД
     range: 15
     itemIconStyle: BigAction
     icon:
@@ -291,17 +291,18 @@
       - id: WoodenSupportBubblegum
         amount: 5
       offset: 0, 1
-      speech: РљСЃСЃСЃ...!??        
+      speech: Кссс...!??        
       
 - type: entity
-  parent: BaseSubdermalImplant #РЎР°Рј РёРјРїР»Р°РЅС‚ 
+  parent: BaseSubdermalImplant #Сам имплант 
   id: BaseSubdermalImplantWall 
-  name: РЎРѕР·РґР°С‚СЊ СЃС‚РµРЅСѓ.
+  name: Создать стену.
   description: 
   noSpawn: true
   components:
     - type: SubdermalImplant
       implantAction: ActionSpawnMagicarpBubblegumWall
+
 
 
 - type: entity
@@ -545,3 +546,4 @@
         amount: 1
       offset: 0, 1
       speech: UUGA BUGA!
+

@@ -1,5 +1,5 @@
 - type: construction
-  name: cleanbot
+  name: Чистобот
   id: cleanbot
   graph: CleanBot
   startNode: start
@@ -12,7 +12,7 @@
     state: cleanbot
 
 - type: construction
-  name: honkbot
+  name: Хонкбот
   id: honkbot
   graph: HonkBot
   startNode: start
@@ -25,7 +25,7 @@
     state: honkbot
 
 - type: construction
-  name: jonkbot
+  name: Кринжбот
   id: jonkbot
   graph: JonkBot
   startNode: start
@@ -38,7 +38,7 @@
     state: jonkbot
 
 - type: construction
-  name: medibot
+  name: Медибот
   id: medibot
   graph: MediBot
   startNode: start
@@ -51,7 +51,7 @@
     state: medibot
 
 - type: construction
-  name: mimebot
+  name: Мимбот
   id: mimebot
   graph: MimeBot
   startNode: start
@@ -64,7 +64,7 @@
     state: mimebot
 
 - type: construction
-  name: supplybot
+  name: Грузобот
   id: supplybot
   graph: SupplyBot
   startNode: start
@@ -75,3 +75,4 @@
   icon:
     sprite: Mobs/Silicon/Bots/supplybot.rsi
     state: supplybot
+

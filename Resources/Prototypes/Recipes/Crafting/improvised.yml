@@ -1,5 +1,5 @@
 - type: construction
-  name: baseball bat
+  name: Бейсбольная бита
   id: bat
   graph: WoodenBat
   startNode: start
@@ -12,7 +12,7 @@
   objectType: Item
 
 - type: construction
-  name: ghost sheet
+  name: Костюм призрака
   id: ghost_sheet
   graph: GhostSheet
   startNode: start
@@ -25,7 +25,7 @@
   objectType: Item
 
 - type: construction
-  name: makeshift handcuffs
+  name: Стяжки
   id: makeshifthandcuffs
   graph: makeshifthandcuffs
   startNode: start
@@ -36,7 +36,7 @@
   objectType: Item
 
 - type: construction
-  name: makeshift stunprod
+  name: Самодельная дубинка
   id: makeshiftstunprod
   graph: makeshiftstunprod
   startNode: start
@@ -47,7 +47,7 @@
   objectType: Item
 
 - type: construction
-  name: muzzle
+  name: Кляп
   id: muzzle
   graph: Muzzle
   startNode: start
@@ -60,7 +60,7 @@
     state: icon
 
 - type: construction
-  name: improvised pneumatic cannon
+  name: Самодельное ружье
   id: pneumaticcannon
   graph: PneumaticCannon
   startNode: start
@@ -73,7 +73,7 @@
     state: icon
 
 - type: construction
-  name: gauze
+  name: Бинт
   id: gauze
   graph: Gauze
   startNode: start
@@ -86,7 +86,7 @@
     state: gauze
 
 - type: construction
-  name: blindfold
+  name: Повязка на глаза
   id: blindfold
   graph: Blindfold
   startNode: start
@@ -99,7 +99,7 @@
     state: icon
 
 - type: construction
-  name: flower wreath
+  name: Винок
   id: flowerwreath
   graph: flowerwreath
   startNode: start
@@ -112,7 +112,7 @@
   objectType: Item
 
 - type: construction
-  name: damp rag
+  name: Тряпка
   id: rag
   graph: Rag
   startNode: start
@@ -125,7 +125,7 @@
     state: rag
 
 - type: construction
-  name: improvised shotgun
+  name: Самодельный дробовик
   id: improvisedshotgun
   graph: ImprovisedShotgunGraph
   startNode: start
@@ -138,7 +138,7 @@
     state: icon
 
 - type: construction
-  name: improvised shotgun shell
+  name: Самодельная карчеть
   id: ShellShotgunImprovised
   graph: ImprovisedShotgunShellGraph
   startNode: start
@@ -151,7 +151,7 @@
     state: improvised
 
 - type: construction
-  name: rifle stock
+  name: Деревянный приклад
   id: riflestock
   graph: RifleStockGraph
   startNode: start
@@ -164,7 +164,7 @@
     state: icon
 
 - type: construction
-  name: fire bomb
+  name: Модульная граната
   id: firebomb
   graph: FireBomb
   startNode: start
@@ -177,7 +177,7 @@
     state: icon
 
 - type: construction
-  name: cotton woven cloth
+  name: Ткань
   id: CottonWovenCloth
   graph: CottonObjects
   startNode: start
@@ -190,7 +190,7 @@
   objectType: Item
 
 - type: construction
-  name: straw hat
+  name: Фермерская шляпа
   id: strawHat
   graph: StrawHat
   startNode: start
@@ -203,7 +203,7 @@
   objectType: Item
 
 - type: construction
-  name: pipe bomb
+  name: Модульная граната
   id: pipebomb
   graph: PipeBomb
   startNode: start

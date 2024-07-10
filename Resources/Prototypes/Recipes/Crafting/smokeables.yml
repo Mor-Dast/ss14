@@ -1,5 +1,5 @@
 - type: construction
-  name: joint
+  name: Косяк
   id: smokeableJoint
   graph: smokeableJoint
   startNode: start
@@ -10,7 +10,7 @@
   objectType: Item
   
 - type: construction
-  name: rainbow joint
+  name: Радужный косяк
   id: smokeableJointRainbow
   graph: smokeableJointRainbow
   startNode: start
@@ -21,7 +21,7 @@
   objectType: Item
 
 - type: construction
-  name: blunt
+  name: Косяк
   id: smokeableBlunt
   graph: smokeableBlunt
   startNode: start
@@ -32,7 +32,7 @@
   objectType: Item
 
 - type: construction
-  name: rainbow blunt
+  name: Радужный косяк
   id: smokeableBluntRainbow
   graph: smokeableBluntRainbow
   startNode: start
@@ -43,7 +43,7 @@
   objectType: Item
 
 - type: construction
-  name: cigarette
+  name: Сигорета
   id: smokeableCigarette
   graph: smokeableCigarette
   startNode: start

@@ -29,7 +29,7 @@
   - type: LeechOnMarker
     leech:
       groups:
-        Brute: -10
+        Brute: -1
   - type: Gun
     soundGunshot: /Audio/Weapons/plasma_cutter.ogg
     fireRate: 1
@@ -66,6 +66,9 @@
     qualities:
       - Prying
   - type: Prying
+  - type: Construction
+    graph: LavaCrusher
+    node: start 
 
 - type: entity
   parent: BaseWeaponCrusher

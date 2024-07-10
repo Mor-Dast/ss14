@@ -158,6 +158,9 @@
   - type: HeldSpeedModifier
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHelmetHardsuitSalvage
+  - type: Construction
+    graph: LavaSkaf1.1
+    node: start 
 
 - type: entity
   parent: ClothingOuterHardsuitBase
@@ -189,6 +192,9 @@
     coefficient: 0.001
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHelmetHardsuitMaxim
+  - type: Construction
+    graph: LavaSkaf2.1
+    node: start 
 
 #Security Hardsuit
 - type: entity

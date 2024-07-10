@@ -218,7 +218,10 @@
     sprintModifier: 0.85
   - type: HeldSpeedModifier
   - type: ToggleableClothing
-    clothingPrototype: ClothingHeadHelmetHardsuitMaxim    
+    clothingPrototype: ClothingHeadHelmetHardsuitMaxim   
+  - type: Construction
+    graph: LavaSkaf1
+    node: start  
     
 #УСКОРИТЕЛЬ
 - type: entity
@@ -316,9 +319,9 @@
         - state: state1
     - type: BallisticAmmoProvider
       proto: SpawnMobGoliath
-      capacity: 400
+      capacity: 2000
     - type: Gun
-      fireRate: 0.15
+      fireRate: 0.07
       selectedMode: FullAuto
       soundGunshot: /Audio/lavaland/the-lava-bubble-gurgled.ogg
     - type: HTN
@@ -333,7 +336,7 @@
       thresholds:
         - trigger:
             !type:DamageTrigger
-            damage: 400
+            damage: 300
           behaviors:
             - !type:DoActsBehavior
               acts: [ "Destruction" ]
@@ -358,21 +361,22 @@
   description: Порождение некрополя, шип из разложившейся плоти пробившийся наружу из самых недр Лаваленда дабы дать жизнь бесчисленному множеству чудовищ.
   parent: TurretPliersGoliath
   id: TurretPliersMagmawing
-  suffix: Наблюдатель,FraG,фауна
+  suffix: Наблюдатель
   components:   
     - type: BallisticAmmoProvider
       proto: SpawnMobWatcherMagmawing
-      capacity: 500
+      capacity: 2000
       
 - type: entity
   name: Шип Некрополя
   description: Порождение некрополя, шип из разложившейся плоти пробившийся наружу из самых недр Лаваленда дабы дать жизнь бесчисленному множеству чудовищ.
   parent: TurretPliersGoliath
+  suffix: Легион
   id: TurretPliersLegion
   components:   
     - type: BallisticAmmoProvider
       proto: SpawnMobDinosaurAnkiSmall
-      capacity: 500
+      capacity: 2000
 
 - type: entity
   name: палочка огненного шара
@@ -416,3 +420,57 @@
         Slash: 0.95
         Heat: 0.85
 
+- type: entity
+  parent: MicroManipulatorStockPart
+  id: LavaGoliathSkin
+  name: кожа голиафа
+  description: Плотная и твердая кожа, возможно можно использовать на скафандрах карго для улучшения
+  suffix: Лава, трофей
+  components:
+  - type: Sprite
+    sprite: _KD/Lava/bloodminer.rsi
+    layers:
+      - state: hide
+  - type: Construction
+    graph: LavaKinetic2
+    node: start 
+  - type: Tag
+    tags:
+    - LavaModifierCraftingSKIN
+
+- type: entity
+  parent: MicroManipulatorStockPart
+  id: LavaModifierLegion
+  name: трофей легиона
+  description: Улучшает оружие шахтеров. Например крушитель.
+  suffix: Лава, трофей
+  components:
+  - type: Sprite
+    sprite: _KD/Lava/legion.rsi
+    layers:
+      - state: dragon
+        map: ["enum.DamageStateVisualLayers.Base"]
+  - type: Construction
+    graph: LavaKinetic2
+    node: start 
+  - type: Tag
+    tags:
+    - LavaModifierCraftingL
+
+- type: entity
+  parent: MicroManipulatorStockPart
+  id: LavaModifierBloodMiner
+  name: глаз кровавого шахтёра
+  description: Улучшает оружие шахтеров. Например крушитель.
+  suffix: Лава, трофей
+  components:
+  - type: Sprite
+    sprite: _KD/Lava/bloodminer.rsi
+    layers:
+      - state: eyes
+  - type: Construction
+    graph: LavaCrusher
+    node: KSH
+  - type: Tag
+    tags:
+    - LavaModifierCraftingKSH

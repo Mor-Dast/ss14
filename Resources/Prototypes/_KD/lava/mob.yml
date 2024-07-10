@@ -5,6 +5,9 @@
   description: Большой демон!
   suffix: Лава, фауна
   components:
+  - type: SlowOnDamage
+    speedModifierThresholds:
+      999: 10
   - type: Sprite
     sprite: _KD/Lava/dragon.rsi
     layers:
@@ -28,14 +31,14 @@
         Structural: 500
   - type: MovementSpeedModifier #Скорость
     baseWalkSpeed: 2
-    baseSprintSpeed: 6
+    baseSprintSpeed: 5
   - type: Reflect 
     enabled: true
     reflectProb: 0.5
     velocityBeforeNotMaxProb: 1.0
     velocityBeforeMinProb: 3.0
     minReflectProb: 0.1
-    spread: 90      #Отражение 
+    spread: 50      #Отражение 
   - type: MobThresholds #ХП
     thresholds:
       0: Alive
@@ -53,9 +56,12 @@
             ClothingNeckCloakGoliathCloakHellspawn:
               min: 1
               max: 1
-            ArtifactFragment:
-              min: 3
-              max: 5
+            Spellblade:
+              min: 1
+              max: 1
+            NecrocrateopenRandom:
+              min: 1
+              max: 1
   - type: PointLight
     radius: 2
     energy: 2.5
@@ -117,8 +123,8 @@
       Dead:
         Base: dragon_dead 
   - type: MovementSpeedModifier
-    baseWalkSpeed: 4
-    baseSprintSpeed: 6
+    baseWalkSpeed: 3
+    baseSprintSpeed: 5
   - type: RechargeBasicEntityAmmo #Кислота 
     rechargeCooldown: 5
   - type: BasicEntityAmmoProvider
@@ -161,7 +167,7 @@
           acts: [ "Destruction" ]
         - !type:SpawnEntitiesBehavior
           spawn:
-            MaterialBones:
+            NecrocrateopenRandom:
               min: 1
               max: 1
             ArtifactFragment:
@@ -193,7 +199,7 @@
   components:
   - type: HTN
     rootTask:
-      task: SimpleHumanoidHostileCompound
+      task: Coloss
   - type: Sprite
     sprite: _KD/Lava/dragon.rsi
     layers:
@@ -212,10 +218,10 @@
     rechargeCooldown: 1.5
   - type: BasicEntityAmmoProvider
     proto: BulletKinetic
-    capacity: 3
-    count: 4       
+    capacity: 2
+    count: 3
   - type: Gun
-    fireRate: 3
+    fireRate: 1
     useKey: false
     selectedMode: FullAuto
     availableModes:
@@ -245,12 +251,15 @@
           acts: [ "Destruction" ]
         - !type:SpawnEntitiesBehavior
           spawn:
+            NecrocrateopenRandom:
+              min: 1
+              max: 1
             ClothingNeckCloakHeraldBubblegum:
               min: 1
               max: 1
             LavaRudaIvent:
-              min: 3
-              max: 5
+              min: 5
+              max: 1
   - type: Bloodstream
     bloodMaxVolume: 0
     bloodReagent: Cryoxadone
@@ -304,6 +313,9 @@
           acts: [ "Destruction" ]
         - !type:SpawnEntitiesBehavior
           spawn:
+            NecrocrateopenRandom:
+              min: 1
+              max: 1
             ClothingNeckCloakVoidLegion:
               min: 1
               max: 1
@@ -380,7 +392,7 @@
       types:
         Blunt: 3 
   - type: TimedDespawn #Система цикла
-    lifetime: 4 
+    lifetime: 3
   - type: Bloodstream
     bloodMaxVolume: 0
     bloodReagent: Cryoxadone     
@@ -474,7 +486,7 @@
     bloodReagent: Cryoxadone  
 
 - type: entity
-  name: Неизвестный 
+  name: пеплоходец
   parent: 
   - MobLavaGostResident
   - MobReptilian
@@ -513,7 +525,7 @@
         Burn: -4.5
 
 - type: entity
-  name: Неизвестный 
+  name: пеплоходец
   parent: 
   - MobLavaGostResident
   - MobReptilian
@@ -580,13 +592,18 @@
   - type: MobThresholds #ХП 
     thresholds:
       0: Alive
-      300: Dead         
+      200: Dead
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 1
+    baseSprintSpeed: 1 
   - type: Butcherable #Разделка 
     spawned:
       - id: MaterialBones1
         amount: 1     
       - id: FoodMeatGoliath
-        amount: 2         
+        amount: 2    
+      - id: LavaGoliathSkin
+        amount: 1     
   - type: MeleeWeapon
     soundHit:
         path: /Audio/Weapons/Xeno/alien_claw_flesh3.ogg
@@ -594,7 +611,7 @@
     animation: AttackLava
     damage:
       types:
-        Piercing: 10 
+        Piercing: 7 
         Blunt: 3 
   - type: AutoImplant
     implants:
@@ -604,15 +621,15 @@
   - type: PassiveDamage # Slight passive regen. Assuming one damage type, comes out to about 4 damage a minute.Самолечение
     allowedStates:
     - Alive
-    damageCap: 300
+    damageCap: 200
     damage:
       types:
         Heat: -25
       groups:
-        Brute: -1   
-        Toxin: -1
-        Airloss: -1
-        Burn: -10 
+        Brute: -0.1   
+        Toxin: -0.1
+        Airloss: -0.1
+        Burn: -5 
   - type: Bloodstream
     bloodMaxVolume: 0
     bloodReagent: Cryoxadone
@@ -621,7 +638,7 @@
 - type: entity
   id: MobWatcherMagmawing
   parent: MobWatcherBase
-  name: magmawing watcher
+  name: магмовый наблюдатель
   components:
   - type: Sprite
     layers:
@@ -638,17 +655,17 @@
   - type: ProjectileBatteryAmmoProvider
     proto: WatcherBoltMagmawing
     fireCost: 50 
-  - type: TimedDespawn #Система цикла
+  - type: TimedDespawn #РЎРёСЃС‚РµРјР° С†РёРєР»Р°
     lifetime: 360         
     ignoreWhitelist: 
-  - type: MovementSpeedModifier #Скорость
+  - type: MovementSpeedModifier #РЎРєРѕСЂРѕСЃС‚СЊ
     baseWalkSpeed: 3
     baseSprintSpeed: 3
   - type: MobThresholds
     thresholds:
       0: Alive
       75: Dead 
-  - type: Butcherable #Разделка 
+  - type: Butcherable #Р Р°Р·РґРµР»РєР° 
     spawned:
       - id: MaterialWebSilk1
         amount: 3  
@@ -662,3 +679,221 @@
   - type: Bloodstream
     bloodMaxVolume: 0
     bloodReagent: Cryoxadone  
+
+
+- type: entity
+  parent: MobBubblegum
+  id: MobDinosaurAnkiMedium
+  suffix: мелочь
+  name: Легион
+  components:
+  - type: Sprite
+    sprite: _KD/Lava/empire.rsi
+    scale: 0.7, 0.7
+    layers:
+      - state: mega_legion
+        map: ["enum.DamageStateVisualLayers.Base"]
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: mega_legion
+      Dead:
+        Base: eva_attack
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 4.5
+    baseSprintSpeed: 3
+  - type: PointLight
+    radius: 0
+    energy: 0
+    color: "#ff4242"
+    castShadows: false  
+  - type: MobThresholds #ХП
+    thresholds:
+      0: Alive
+      200: Dead  
+  - type: MeleeWeapon
+    soundHit:
+        path: /Audio/Weapons/Xeno/alien_claw_flesh3.ogg
+    angle: 0
+    animation: AttackLava
+    damage:
+      types:
+        Blunt: 5
+        Structural: 100
+  - type: Fixtures
+    fixtures: 
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.35
+        density: 185
+        restitution: 0.0
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: Destructible 
+    thresholds:
+      - trigger:
+          !type:DamageTrigger
+          damage: 200
+        behaviors:
+        - !type:DoActsBehavior
+          acts: [ "Destruction" ]
+        - !type:SpawnEntitiesBehavior
+          spawn:
+            HealingToolboxKernel:
+              min: 1
+              max: 2
+            MobDinosaurAnkiSmall1:
+              min: 2
+              max: 2
+  - type: Bloodstream
+    bloodMaxVolume: 0
+    bloodReagent: Cryoxadone
+
+- type: entity
+  parent: MobBubblegum
+  id: MobDinosaurAnkiSmall1
+  suffix: мелочь
+  name: Легион
+  components:
+  - type: Sprite
+    sprite: _KD/Lava/empire.rsi
+    scale: 0.5, 0.5
+    layers:
+      - state: mega_legion
+        map: ["enum.DamageStateVisualLayers.Base"]
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: mega_legion
+      Dead:
+        Base: eva_attack
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 4.5
+    baseSprintSpeed: 3
+  - type: PointLight
+    radius: 0
+    energy: 0
+    color: "#ff4242"
+    castShadows: false  
+  - type: MobThresholds #ХП
+    thresholds:
+      0: Alive
+      100: Dead  
+  - type: MeleeWeapon
+    soundHit:
+        path: /Audio/Weapons/Xeno/alien_claw_flesh3.ogg
+    angle: 0
+    animation: AttackLava
+    damage:
+      types:
+        Blunt: 5
+        Structural: 100
+  - type: Destructible 
+    thresholds:
+      - trigger:
+          !type:DamageTrigger
+          damage: 100
+        behaviors:
+        - !type:DoActsBehavior
+          acts: [ "Destruction" ]
+        - !type:SpawnEntitiesBehavior
+          spawn:
+            HealingToolboxKernel:
+              min: 1
+              max: 1
+  - type: Fixtures
+    fixtures: 
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.35
+        density: 185
+        restitution: 0.0
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: Bloodstream
+    bloodMaxVolume: 0
+    bloodReagent: Cryoxadone
+
+- type: entity
+  parent: BaseMobHuman
+  id: BloodMinerMob
+  name: кровавый утилизатор
+  components:
+  - type: SlowOnDamage
+    speedModifierThresholds:
+      345: 2
+  - type: HTN
+    rootTask:
+      task: XenoCompound
+    blackboard:
+      NavClimb: !type:Bool
+        true
+      NavInteract: !type:Bool
+        true
+      NavPry: !type:Bool
+        true
+      NavSmash: !type:Bool
+        true  
+  - type: NpcFactionMember
+    factions:
+    - Xeno
+  - type: Fixtures
+    fixtures: 
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.35
+        density: 185
+        restitution: 0.0
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 2.5
+    baseSprintSpeed: 4
+  - type: PointLight
+    radius: 0
+    energy: 0
+    color: "#ff4242"
+    castShadows: false  
+  - type: MobThresholds #ХП
+    thresholds:
+      0: Alive
+      400: Dead  
+  - type: MeleeWeapon
+    soundHit:
+        path: /Audio/Weapons/Xeno/alien_claw_flesh3.ogg
+    angle: 0
+    animation: AttackLava
+    damage:
+      types:
+        Blunt: 15
+  - type: Destructible 
+    thresholds:
+      - trigger:
+          !type:DamageTrigger
+          damage: 399 
+        behaviors:
+        - !type:DoActsBehavior
+          acts: [ "Destruction" ]
+        - !type:SpawnEntitiesBehavior
+          spawn:
+            LavaWeaponProtoKineticAccelerator:
+              min: 1
+              max: 1
+            LavaModifierBloodMiner:
+              min: 1
+              max: 1
+  - type: Loadout
+    prototypes:
+    - BloodMinerGear
+  - type: Bloodstream
+    bloodMaxVolume: 0
+    bloodReagent: Cryoxadone

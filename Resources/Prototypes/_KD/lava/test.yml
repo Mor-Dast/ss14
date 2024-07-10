@@ -1,458 +1,254 @@
 #-------------------ВСЕ НИЖЕ ЭТО РАЗРАБОТКИ КОСМОДРОМА И БУДЕТ СО СТО ПРОЦЕНТНОЙ ВЕРОЯТНОСТЬЮ ДОРАБАТЫВАТСЯ!!!-------------------
 
 - type: entity
-  name: Спавнер Дрейка
-  id: SpawnMobDrake
-  parent: SpawnMobLegion
-  components:
-  - type: ConditionalSpawner
-    prototypes:
-    - MobAshDrake
-
-- type: entity
-  name: Спавнер Колосса
-  id: SpawnMobColossus 
-  parent: SpawnMobLegion
-  components:
-  - type: ConditionalSpawner
-    prototypes:
-    - MobColossus 
-
-- type: entity
-  name: Спавнер Бубльгум
-  id: SpawnMobBubblegum
-  parent: SpawnMobLegion
-  components:
-  - type: ConditionalSpawner
-    prototypes:
-    - MobBubblegum
-
-- type: entity
-  name: Спавнер большого Легиона
-  id: SpawnMobBigLegion
-  parent: SpawnMobLegion
-  components:
-  - type: ConditionalSpawner
-    prototypes:
-    - MobDinosaurAnki
-
-- type: constructionGraph
-  id: LavaKinetic1
-  start: start
-  graph:
-    - node: start
-      edges:
-        - to: upgraded
-          steps:
-            - tag: LavaModifierCrafting 
-              doAfter: 2
-    - node: upgraded
-      entity: LavaWeaponProtoKineticAccelerator
-
-- type: entity
   parent: MicroManipulatorStockPart
-  id: LavaModifierLegion
-  name: трофей легиона
-  description: Улучшает оружие шахтеров. Например крушитель.
-  suffix: Лава, трофей
+  id: LavaModifierGoolfik
+  name: костянной гульфик
+  description: может быть надет на комбенизон утилизатора
   components:
   - type: Sprite
-    sprite: _KD/Lava/legion.rsi
+    sprite: _KD/Lava/goolfik.rsi
+    scale: 0.5, 0.5
     layers:
-      - state: dragon
+      - state: item
         map: ["enum.DamageStateVisualLayers.Base"]
   - type: Construction
-    graph: LavaKinetic2
+    graph: LavaKombez1
     node: start 
   - type: Tag
     tags:
-    - LavaModifierCraftingL
+    - LavaModifierCraftingG
 
 - type: entity
-  parent: MicroManipulatorStockPart
-  id: LavaModifierBloodMiner
-  name: глаз кровавого шахтёра
-  description: Улучшает оружие шахтеров. Например крушитель.
-  suffix: Лава, трофей
+  parent: ClothingUniformJumpsuitSalvageSpecialist
+  id: ClothingUniformJumpsuitSalvageSpecialist1
+  name: комбинезон утилизатора
+  description: комбинезон утиля но с гульфиком
   components:
-  - type: Sprite
-    sprite: _KD/Lava/legion.rsi
-    layers:
-      - state: dragon
-        map: ["enum.DamageStateVisualLayers.Base"]
-  - type: Construction
-    graph: LavaCrusher
-    node: KSH
-  - type: Tag
-    tags:
-    - LavaModifierCraftingKSH
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.9
+        Slash: 0.9
+        Piercing: 0.9
 
 - type: constructionGraph
-  id: LavaCrusher
-  start: start
-  graph:
-    - node: start
-      edges:
-        - to: upgradedL
-          steps: 
-            - tag: LavaModifierCraftingL
-              doAfter: 2
-
-        - to: upgradedKSH
-          steps:
-            - tag: LavaModifierCraftingKSH
-              doAfter: 2
-
-
-    - node: upgradedL
-      entity: WeaponCrusherL
-      edges:
-        - to: start
-          completed:
-            - !type:GivePrototype
-              prototype: LavaModifierLegion
-              amount: 2
-          steps:
-            - tool: Prying
-              doAfter: 2
-
-    - node: upgradedKSH
-      entity: WeaponCrusherKSH
-      edges:
-        - to: start
-          completed:
-            - !type:GivePrototype
-              prototype: LavaModifierBloodMiner
-              amount: 2
-          steps:
-            - tool: Prying
-              doAfter: 2
-
-- type: entity
-  parent: WeaponCrusher
-  id: WeaponCrusherL
-  suffix: Лава, трофей
-  name: крушитель
-  description: "На крушителе имеются следующие трофеи: череп легиона" 
-  components:
-  - type: Gun
-    fireRate: 1.3
-  - type: Construction
-    graph: LavaCrusher1
-    node: start
-
-- type: constructionGraph
-  id: LavaCrusher2
+  id: LavaKombez1
   start: start
   graph:
     - node: start
       edges:
         - to: upgraded
           steps: 
-            - tag: LavaModifierCraftingL
+            - tag: LavaModifierCraftingG
               doAfter: 2
 
     - node: upgraded
-      entity: WeaponCrusherLKSH
-      edges:
-        - to: start
-          completed:
-            - !type:GivePrototype
-              prototype: LavaModifierLegion
-              amount: 2
-          steps:
-            - tool: Prying
-              doAfter: 2
-
-- type: constructionGraph
-  id: LavaCrusher1
-  start: start
-  graph:
-    - node: start
-      edges:
-        - to: upgraded
-          steps: 
-            - tag: LavaModifierCraftingKSH
-              doAfter: 2
-
-    - node: upgraded
-      entity: WeaponCrusherLKSH
-      edges:
-        - to: start
-          completed:
-            - !type:GivePrototype
-              prototype: LavaModifierBloodMiner
-              amount: 2
-          steps:
-            - tool: Prying
-              doAfter: 2
+      entity:  ClothingUniformJumpsuitSalvageSpecialist1
 
 - type: entity
-  parent: WeaponCrusher
-  id: WeaponCrusherKSH
-  suffix: Лава, трофей
-  name: крушитель
-  description: "На крушителе имеются следующие трофеи: глаз кровавого шахтера"  
+  parent: [ClothingEyesBase, ShowSecurityIcons, ]
+  id: ClothingEyesGodEye
+  name: глаз бога
+  description: Старый артефакт который охроняет древний арх ангел колосс.
   components:
-  - type: LeechOnMarker
-    leech:
-      groups:
-        Brute: -21
-  - type: Construction
-    graph: LavaCrusher2
-    node: start
+  - type: ShowHealthBars
+    damageContainers:
+    - Inorganic
+    - Silicon
+    - Biological
+    - HalfSpirit
+  - type: ShowThirstIcons
+  - type: ShowHungerIcons
+  - type: ShowHealthIcons
+    damageContainers:
+    - Biological
+    - HalfSpirit
+  - type: ShowSyndicateIcons
 
 - type: entity
-  parent: WeaponCrusher
-  id: WeaponCrusherLKSH
-  suffix: Лава, трофей
-  name: крушитель
-  description: "На крушителе имеются следующие трофеи: глаз кровавого шахтера, череп легиона" 
+  name: волшебный меч
+  parent: BaseItem
+  id: Spellblade
+  description: Выкованный в адской кузнице, способный на растроинии убить вашу цель.
   components:
-  - type: LeechOnMarker
-    leech:
-      groups:
-        Brute: -4
-  - type: Gun
-    fireRate: 1.3
-
-- type: entity
-  parent: SalvageHumanCorpse
-  id: MobSalvageSpecialistCorpse
-  suffix: Dead, Cargo
-  components:
-  - type: Loadout
-    prototypes:
-    - SalvageSpecialistGear
-
-- type: Tag
-  id: LavaModifierCraftingL
-
-- type: Tag
-  id: LavaModifierCrafting
-
-- type: Tag
-  id: LavaWeaponProtoKineticAccelerator
-
-- type: Tag
-  id: WeaponProtoKineticAcceleratorCrafting
-
-- type: Tag
-  id: HealingToolboxKernelCrafting
-
-- type: Tag
-  id: FoodMeatGoliathCrafting 
-
-- type: Tag
-  id: LavaModifierCraftingKSH
-
-- type: Tag
-  id: LavaModifierCraftingLKSH
-
-- type: entity
-  parent: MobBubblegum
-  id: MobDinosaurAnkiMedium
-  suffix: Большой разчленёныш
-  name: Легион
-  components:
+  - type: Sharp
   - type: Sprite
-    sprite: _KD/Lava/empire.rsi
-    scale: 0.7, 0.7
-    layers:
-      - state: mega_legion
-        map: ["enum.DamageStateVisualLayers.Base"]
-  - type: DamageStateVisuals
-    states:
-      Alive:
-        Base: mega_legion
-      Dead:
-        Base: eva_attack
-  - type: MovementSpeedModifier
-    baseWalkSpeed: 4.5
-    baseSprintSpeed: 3
-  - type: PointLight
-    radius: 0
-    energy: 0
-    color: "#ff4242"
-    castShadows: false  
-  - type: MobThresholds #ХП
-    thresholds:
-      0: Alive
-      200: Dead  
-  - type: MeleeWeapon
-    soundHit:
-        path: /Audio/Weapons/Xeno/alien_claw_flesh3.ogg
-    angle: 0
-    animation: AttackLava
-    damage:
-      types:
-        Blunt: 5
-        Structural: 100
-  - type: Fixtures
-    fixtures: 
-      fix1:
-        shape:
-          !type:PhysShapeCircle
-          radius: 0.35
-        density: 185
-        restitution: 0.0
-        mask:
-        - MobMask
-        layer:
-        - MobLayer
-  - type: Destructible 
-    thresholds:
-      - trigger:
-          !type:DamageTrigger
-          damage: 200
-        behaviors:
-        - !type:DoActsBehavior
-          acts: [ "Destruction" ]
-        - !type:SpawnEntitiesBehavior
-          spawn:
-            HealingToolboxKernel:
-              min: 1
-              max: 2
-            MobDinosaurAnkiSmall1:
-              min: 2
-              max: 2
-  - type: Bloodstream
-    bloodMaxVolume: 0
-    bloodReagent: Cryoxadone
-
-- type: entity
-  parent: MobBubblegum
-  id: MobDinosaurAnkiSmall1
-  suffix: Средний разчленёныш
-  name: Легион
-  components:
-  - type: Sprite
-    sprite: _KD/Lava/empire.rsi
+    sprite: _KD/Lava/sword.rsi
     scale: 0.5, 0.5
     layers:
-      - state: mega_legion
+      - state: icon
         map: ["enum.DamageStateVisualLayers.Base"]
-  - type: DamageStateVisuals
-    states:
-      Alive:
-        Base: mega_legion
-      Dead:
-        Base: eva_attack
-  - type: MovementSpeedModifier
-    baseWalkSpeed: 4.5
-    baseSprintSpeed: 3
-  - type: PointLight
-    radius: 0
-    energy: 0
-    color: "#ff4242"
-    castShadows: false  
-  - type: MobThresholds #ХП
-    thresholds:
-      0: Alive
-      100: Dead  
   - type: MeleeWeapon
-    soundHit:
-        path: /Audio/Weapons/Xeno/alien_claw_flesh3.ogg
-    angle: 0
-    animation: AttackLava
+    attackRate: 1
     damage:
       types:
-        Blunt: 5
-        Structural: 100
-  - type: Destructible 
-    thresholds:
-      - trigger:
-          !type:DamageTrigger
-          damage: 100
-        behaviors:
-        - !type:DoActsBehavior
-          acts: [ "Destruction" ]
-        - !type:SpawnEntitiesBehavior
-          spawn:
-            HealingToolboxKernel:
-              min: 1
-              max: 1
-  - type: Fixtures
-    fixtures: 
-      fix1:
-        shape:
-          !type:PhysShapeCircle
-          radius: 0.35
-        density: 185
-        restitution: 0.0
-        mask:
-        - MobMask
-        layer:
-        - MobLayer
-  - type: Bloodstream
-    bloodMaxVolume: 0
-    bloodReagent: Cryoxadone
+        Slash: 20
+    soundHit:
+        path: /Audio/Weapons/Rapier.ogg
+  - type: Item
+    size: Normal
+    sprite: _KD/Lava/sword.rsi
+  - type: DisarmMalus
+  - type: ProjectileBatteryAmmoProvider
+    proto: Razrez
+    fireCost: 100
+  - type: BatterySelfRecharger
+    autoRecharge: true
+    autoRechargeRate: 100
+  - type: Gun
+    useKey: false
+    projectileSpeed: 75
+    soundGunshot:
+      path: /Audio/Weapons/Rapier.ogg
+  - type: Battery
+    maxCharge: 101
+    startingCharge: 101
 
 - type: entity
-  parent: 
-   - MobBubblegum
-   - BaseMobHuman
-  id: BloodMinerMob
-  name: кровавый шахтёр
+  name: лазерная пуля
+  id: Razrez
+  parent: EmitterBolt
+  noSpawn: true
   components:
-  - type: Fixtures
-    fixtures: 
-      fix1:
-        shape:
-          !type:PhysShapeCircle
-          radius: 0.35
-        density: 185
-        restitution: 0.0
-        mask:
-        - MobMask
-        layer:
-        - MobLayer
-  - type: MovementSpeedModifier
-    baseWalkSpeed: 2.5
-    baseSprintSpeed: 4
-  - type: PointLight
-    radius: 0
-    energy: 0
-    color: "#ff4242"
-    castShadows: false  
-  - type: MobThresholds #ХП
-    thresholds:
-      0: Alive
-      400: Dead  
-  - type: MeleeWeapon
-    soundHit:
-        path: /Audio/Weapons/Xeno/alien_claw_flesh3.ogg
-    angle: 0
-    animation: AttackLava
+  - type: Sprite
+    sprite: _KD/Lava/razrez.rsi
+    layers:
+    - state: ammo
+      shader: unshaded
+  - type: Projectile
     damage:
       types:
-        Blunt: 15
-  - type: Destructible 
-    thresholds:
-      - trigger:
-          !type:DamageTrigger
-          damage: 350 
-        behaviors:
-        - !type:DoActsBehavior
-          acts: [ "Destruction" ]
-        - !type:SpawnEntitiesBehavior
-          spawn:
-            LavaWeaponProtoKineticAccelerator:
-              min: 1
-              max: 1
-            BloodPila:
-              min: 1
-              max: 1
-  - type: Loadout
-    prototypes:
-    - BloodMinerGear
-  - type: Bloodstream
-    bloodMaxVolume: 0
-    bloodReagent: Cryoxadone
+        Slash: 12
 
 - type: entity
-  name: кровавая пила
-  parent: BaseKnife
-  id: BloodPila
-  description: Кровавая пила, вся в крови.
-  co
+  id: WallRockBasaltLava
+  parent: WallRockBasalt
+  name: базальт
+  suffix: ляваленд епти
+  description: An asteroid.
+  components:
+  - type: OreVein
+    oreChance: 0.28
+    oreRarityPrototypeId: RandomOreDistributionStandard
+
+- type: entity
+  parent: DeviceQuantumSpinInverter
+  id: DeviceQuantumSpinKybBlue
+  name: синий куб
+  description: Древний артефакт.
+  components:
+  - type: SwapTeleporter
+    cooldown: 1
+    teleporterWhitelist:
+      tags:
+      - DeviceQuantumSpinKybRed
+  - type: Sprite
+    sprite: Objects/Specific/Robotics/mmi.rsi
+    layers:
+      - state: posibrain
+        map: ["enum.DamageStateVisualLayers.Base"]
+    color: "#0000FF"
+  - type: Tag
+    tags:
+    - DeviceQuantumSpinKybBlue
+  - type: GenericVisualizer
+    visuals:
+      enum.SwapTeleporterVisuals.Linked:
+        base:
+          True: { state: posibrain-occupied }
+  - type: SmokeOnTrigger
+    duration: 10
+    spreadAmount: 25
+
+- type: entity
+  parent: DeviceQuantumSpinInverter
+  id: DeviceQuantumSpinKybRed
+  name: красный куб
+  description: Древний артефакт.
+  components:
+  - type: SwapTeleporter
+    cooldown: 1
+    teleporterWhitelist:
+      tags:
+      - DeviceQuantumSpinKybBlue
+  - type: Sprite
+    color: "#FF0000"
+    sprite: Objects/Specific/Robotics/mmi.rsi
+    layers:
+      - state: posibrain
+        map: ["enum.DamageStateVisualLayers.Base"]
+  - type: Tag
+    tags:
+    - DeviceQuantumSpinKybRed
+  - type: GenericVisualizer
+    visuals:
+      enum.SwapTeleporterVisuals.Linked:
+        base:
+          True: { state: posibrain-occupied }
+  - type: SmokeOnTrigger
+    duration: 10
+    spreadAmount: 25
+
+- type: htnCompound
+  id: Coloss
+  branches:
+    - tasks:
+        - !type:HTNPrimitiveTask
+          operator: !type:UtilityOperator
+            proto: NearbyGunTargets
+        - !type:HTNPrimitiveTask
+          operator: !type:MoveToOperator
+            shutdownState: PlanFinished
+            pathfindInPlanning: true
+            removeKeyOnFinish: false
+            targetKey: TargetCoordinates
+            pathfindKey: TargetPathfind
+            stopOnLineOfSight: true
+            rangeKey: MeleeRange
+        - !type:HTNPrimitiveTask
+          operator: !type:JukeOperator
+            jukeType: AdjacentTile
+        - !type:HTNPrimitiveTask
+          operator: !type:SpeakOperator
+            speech: Сдохни обезьяна!
+        - !type:HTNPrimitiveTask
+          preconditions:
+            - !type:KeyExistsPrecondition
+              key: Target
+          operator: !type:GunOperator
+            targetKey: Target
+          services:
+            - !type:UtilityService
+              id: RangedService
+              proto: NearbyGunTargets
+              key: Target
+        - !type:HTNPrimitiveTask
+          operator: !type:SpeakOperator
+            speech: Ничтожная мартышка!
+
+- type: entity
+  id: ActionPolymorfDrake
+  name: Превратится в низшего дракона
+  description: Превращает вас в низшего дракона.
+  noSpawn: true
+  components:
+  - type: InstantAction
+    checkCanInteract: false
+    charges: 2
+    useDelay: 5
+    itemIconStyle: BigAction
+    priority: -20
+    icon:
+      sprite: Structures/Specific/anomaly.rsi
+      state: anom4
+    event: !type:PolymorphActionEvent
+      protoId: MobAshDrake
+
+- type: entity
+  id: LavaDrakeImplanter
+  name: 1ТЕСТ
+  parent: BaseImplantOnlyImplanter
+  components:
+    - type: Implanter
+      implant: ActionPolymorfDrake 

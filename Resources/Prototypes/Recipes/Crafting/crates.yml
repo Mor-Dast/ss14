@@ -1,5 +1,5 @@
 - type: construction
-  name: livestock crate
+  name: Ящик для живности
   id: CrateLivestock
   graph: CrateLivestock
   startNode: start
@@ -10,7 +10,7 @@
   objectType: Structure
 
 - type: construction
-  name: steel crate
+  name: Стальной ящик
   id: CrateGenericSteel
   graph: CrateGenericSteel
   startNode: start
@@ -21,7 +21,7 @@
   objectType: Structure
 
 - type: construction
-  name: secure crate
+  name: Ящик СБ
   id: CrateSecure
   graph: CrateSecure
   startNode: start
@@ -32,7 +32,7 @@
   objectType: Structure
 
 - type: construction
-  name: plastic crate
+  name: Пластиковый ящик
   id: CratePlastic
   graph: CratePlastic
   startNode: start
@@ -43,7 +43,7 @@
   objectType: Structure
 
 - type: construction
-  name: cardboard box
+  name: Картонная коробка
   id: BigBox
   graph: BaseBigBox
   startNode: start
@@ -54,7 +54,7 @@
   objectType: Structure
 
 - type: construction
-  name: cardboard box
+  name: Каробочка
   id: BoxCardboard
   graph: BoxCardboard
   startNode: start
@@ -65,7 +65,7 @@
   objectType: Item
 
 - type: construction
-  name: coffin
+  name: Гроб
   id: CrateCoffin
   graph: CrateCoffin
   startNode: start
