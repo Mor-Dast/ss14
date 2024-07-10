@@ -5,7 +5,7 @@
   playTimeTracker: JobSalvageSpecialist
   requirements:
     - !type:OverallPlaytimeRequirement
-      time: 1 
+      time: 60
   icon: "JobIconShaftMiner"
   startingGear: SalvageSpecialistGear
   supervisors: job-supervisors-qm

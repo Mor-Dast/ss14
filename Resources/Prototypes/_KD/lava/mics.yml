@@ -330,86 +330,79 @@
     - type: StorageFill
       contents:
         - id: LavaRudaIvent #КристаллСундук
-          prob: 0.50
+          prob: 0.5
         - id: LavaRudaIvent #КристаллСундук
-          prob: 0.50
+          prob: 0.5
         - id: LavaRudaIvent #КристаллСундук
-          prob: 0.50
-        - id: LavaRudaIvent #КристаллСундук
-          prob: 0.50
-        - id: LavaRudaIvent #КристаллСундук
-          prob: 0.50
-        - id: LavaRudaIvent #КристаллСундукz
-          prob: 0.50          
-        - id: LavaRudaIvent #КристаллСундук
-          prob: 0.50   
-        - id: LavaRudaIvent #КристаллСундук
-          prob: 0.50   
-        - id: LavaRudaIvent #КристаллСундук
-          prob: 0.50   
-        - id: HealingToolboxKernel #ЯдроСундук
-          prob: 0.50
-        - id: HealingToolboxKernel #ЯдроСундук
-          prob: 0.50
-        - id: HealingToolboxKernel #ЯдроСундук
-          prob: 0.50
-        - id: ClothingBeltQuiverRev #СтрелыСундук
-          prob: 0.33
-        - id: SpearBone #КопьеСундук
-          prob: 0.10
-        - id: ClothingHeadHelmetBone #ШлемСундук 
-          prob: 0.44
-        - id: ClothingOuterArmorBone #КостяСундук
-          prob: 0.2
-        - id: ClothingNeckCloakMiner #ПлащШахтёрСундук 
-          prob: 0.2
-        - id: ClothingNeckCloakVoid #ПлащПустотыСундук 
-          prob: 0.1
-        - id: ClothingNeckCloakGoliathGoliath #ПлащГолиафСундук   
           prob: 0.05
-        - id: ClothingNeckCloakGoliathCloak #ПлащГолиафВанилСундук 
-          prob: 0.07
+        - id: LavaRudaIvent #КристаллСундук
+          prob: 0.05
+        - id: LavaRudaIvent #КристаллСундук
+          prob: 0.5
+        - id: HealingToolboxKernel #ЯдроСундук
+          prob: 0.5
+        - id: HealingToolboxKernel #ЯдроСундук
+          prob: 0.05
+        - id: HealingToolboxKernel #ЯдроСундук
+          prob: 0.05
+        - id: ClothingBeltQuiverRev #СтрелыСундук
+          prob: 0.033
+        - id: SpearBone #КопьеСундук
+          prob: 0.02
+        - id: ClothingHeadHelmetBone #ШлемСундук 
+          prob: 0.024
+        - id: ClothingOuterArmorBone #КостяСундук
+          prob: 0.014
+        - id: ClothingNeckCloakMiner #ПлащШахтёрСундук 
+          prob: 0.02
+        - id: ClothingNeckCloakGoliathGoliath #ПлащГолиафСундук   
+          prob: 0.005
         - id: AnomalyCoreFlesh #ЯдроАнолимииСундук 
-          prob: 0.10
-        - id: WeaponFlareGun #ПлащГолиафВанилСундук 
-          prob: 0.1
+          prob: 0.0001
+        - id: WeaponFlareGun  
+          prob: 0.01
         - id: ClothingOuterHardsuitLuxury #СкафЭлитСундук
-          prob: 0.1
+          prob: 0.01
         - id: LavaClothingOuterHardsuitSpatio #СкафБурСундук 
           prob: 0.005
         - id: ClothingOuterHardsuitMaxim #СкафМаксСундук 
-          prob: 0.005
+          prob: 0.0005
         - id: LavaModifier #МодульСундук 
           prob: 0.004       
           orGroup: syndiemaintloot   
         - id: LavaWeaponWandFireball #ОгненныйПосохСундук
-          prob: 0.0010
+          prob: 0.001
           orGroup: syndiemaintloot   
+        - id: DeviceQuantumSpinKybRed #Красни кубСундук 
+          prob: 0.02
+        - id: DeviceQuantumSpinKybBlue #Красни кубСундук 
+          prob: 0.02
+        - id: ClothingOuterHardsuitBerserk #Красни кубСундук 
+          prob: 0.01
         #Ваниль
         - id: CigPackSyndicate #СигарСундук 
-          prob: 0.33       
+          prob: 0.03      
         - id: WeaponSniperMosin #МосинСундук 
-          prob: 0.33
+          prob: 0.03
         - id: ThrowingKnivesKit #НожыСундук 
-          prob: 0.005       
+          prob: 0.0005       
         - id: WeaponSniperHristov #СнайпаСундук 
           prob: 0.005   
         - id: ClothingBeltSyndieHolster #КобураСундук 
-          prob: 0.33
+          prob: 0.033
         - id: ClothingBackpackSyndicate #РюкзСундук 
-          prob: 0.33          
+          prob: 0.033          
         - id: StimkitFilled #стимпакСундук 
-          prob: 0.33
+          prob: 0.033
         - id: LanternFlash #СветильникСундук 
-          prob: 0.33
+          prob: 0.033
         - id: SlipocalypseClusterSoap #МылоСундук 
-          prob: 0.33  
+          prob: 0.033  
         - id: ToolboxSyndicateFilled #ИнструментСундук 
-          prob: 0.01          
+          prob: 0.001          
         - id: DehydratedSpaceCarp #КарпСундук 
-          prob: 0.33              
+          prob: 0.023              
         - id: ClothingBackpackDuffelSyndicateCostumeClown #КлоунСундук 
-          prob: 0.005          
+          prob: 0.0005
         - id: ClothingHeadHatCatEars #УшкиСундук 
-          prob: 0.001
-
+          prob: 0.0001

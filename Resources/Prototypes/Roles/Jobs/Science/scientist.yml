@@ -5,7 +5,7 @@
   playTimeTracker: JobScientist
   requirements:
     - !type:OverallPlaytimeRequirement
-      time: 1 
+      time: 60
   startingGear: ScientistGear
   icon: "JobIconScientist"
   supervisors: job-supervisors-rd

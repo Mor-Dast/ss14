@@ -5,7 +5,7 @@
   playTimeTracker: JobAtmosphericTechnician
   requirements:
     - !type:OverallPlaytimeRequirement
-      time: 1 
+      time: 60
   startingGear: AtmosphericTechnicianGear
   icon: "JobIconAtmosphericTechnician"
   supervisors: job-supervisors-ce

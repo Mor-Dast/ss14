@@ -5,7 +5,7 @@
   description: Модные часы так еще и жизнь спасает!
   components:
   - type: Sprite
-    sprite: /_KD/CompactDefib/compactdefib.rsi
+    sprite: _KD/CompactDefib/compactdefib.rsi
     layers:
     - state: icon
     - state: screen

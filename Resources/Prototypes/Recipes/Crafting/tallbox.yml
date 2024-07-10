@@ -1,6 +1,6 @@
 - type: construction
-  id: ClosetSteel
-  name: closet
+  id: closet
+  name: Стальной шкаф
   graph: ClosetSteel
   startNode: start
   targetNode: done
@@ -11,7 +11,7 @@
 
 - type: construction
   id: ClosetSteelSecure
-  name: secure closet
+  name: СБ ящик
   graph: ClosetSteelSecure
   startNode: start
   targetNode: done
@@ -22,7 +22,7 @@
 
 - type: construction
   id: ClosetWall
-  name: wall closet
+  name: Настенный шкаф
   graph: ClosetWall
   startNode: start
   targetNode: done

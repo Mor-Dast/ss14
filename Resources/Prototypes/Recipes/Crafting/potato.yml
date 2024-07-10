@@ -1,5 +1,5 @@
 - type: construction
-  name: potato battery
+  name: Картофельная батарея
   id: PowerCellPotato
   graph: PowerCellPotato
   startNode: start
@@ -10,7 +10,7 @@
   objectType: Item
 
 - type: construction
-  name: potato artificial intelligence
+  name: Картофельный ИИ
   id: PotatoAI
   graph: PotatoAI
   startNode: start
@@ -21,7 +21,7 @@
   objectType: Item
   
 - type: construction
-  name: supercompact AI chip
+  name: Суперкомпактный чип искусственного интеллекта
   id: PotatoAIChip
   graph: PotatoAIChip
   startNode: start

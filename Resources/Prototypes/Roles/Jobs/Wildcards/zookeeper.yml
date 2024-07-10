@@ -5,7 +5,7 @@
   playTimeTracker: JobZookeeper
   requirements:
     - !type:OverallPlaytimeRequirement
-      time: 1 
+      time: 60
   startingGear: ZookeeperGear
   icon: "JobIconZookeeper"
   supervisors: job-supervisors-hop

@@ -5,7 +5,7 @@
   playTimeTracker: JobMedicalDoctor
   requirements:
     - !type:OverallPlaytimeRequirement
-      time: 1 
+      time: 60
   startingGear: DoctorGear
   icon: "JobIconMedicalDoctor"
   supervisors: job-supervisors-cmo

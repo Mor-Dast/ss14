@@ -5,7 +5,7 @@
   playTimeTracker: JobChemist
   requirements:
     - !type:OverallPlaytimeRequirement
-      time: 1 
+      time: 60
   startingGear: ChemistGear
   icon: "JobIconChemist"
   supervisors: job-supervisors-cmo

@@ -94,6 +94,9 @@
     heldPrefix: ansible_crystal
   - type: StackPrice
     price: 200
+  - type: Stack
+    count: 1
+    stackType: Telecrystal
   - type: Currency
     price:
       LavaRudaIvent: 1   

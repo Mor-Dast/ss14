@@ -5,7 +5,7 @@
   playTimeTracker: JobReporter
   requirements:
     - !type:OverallPlaytimeRequirement
-      time: 1 
+      time: 60
   startingGear: ReporterGear
   icon: "JobIconReporter"
   supervisors: job-supervisors-hop

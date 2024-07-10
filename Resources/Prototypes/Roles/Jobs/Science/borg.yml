@@ -5,7 +5,7 @@
   playTimeTracker: JobBorg
   requirements:
     - !type:OverallPlaytimeRequirement
-      time: 1 
+      time: 60
   canBeAntag: false
   icon: JobIconBorg
   supervisors: job-supervisors-rd
