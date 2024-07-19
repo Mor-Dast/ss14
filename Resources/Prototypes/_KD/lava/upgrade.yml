@@ -1,0 +1,573 @@
+- type: constructionGraph
+  id: LavaKinetic1
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: upgraded
+          steps:
+            - tag: LavaModifierCrafting 
+              doAfter: 2
+    - node: upgraded
+      entity: LavaWeaponProtoKineticAccelerator
+
+- type: constructionGraph
+  id: LavaCrusher
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: upgradedL
+          steps: 
+            - tag: LavaModifierCraftingL
+              doAfter: 2
+
+        - to: upgradedKSH
+          steps:
+            - tag: LavaModifierCraftingKSH
+              doAfter: 2
+
+    - node: upgradedL
+      entity: WeaponCrusherL
+      edges:
+        - to: start
+          completed:
+            - !type:GivePrototype
+              prototype: LavaModifierLegion
+              amount: 2
+          steps:
+            - tool: Prying
+              doAfter: 2
+
+    - node: upgradedKSH
+      entity: WeaponCrusherKSH
+      edges:
+        - to: start
+          completed:
+            - !type:GivePrototype
+              prototype: LavaModifierBloodMiner
+              amount: 2
+          steps:
+            - tool: Prying
+              doAfter: 2
+
+- type: entity
+  parent: WeaponCrusher
+  id: WeaponCrusherL
+  suffix: Лава, трофей
+  name: крушитель
+  description: "На крушителе имеются следующие трофеи: череп легиона" 
+  components:
+  - type: Gun
+    fireRate: 1.3
+  - type: Construction
+    graph: LavaCrusher1
+    node: start
+
+- type: constructionGraph
+  id: LavaCrusher2
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: upgraded
+          steps: 
+            - tag: LavaModifierCraftingL
+              doAfter: 2
+
+    - node: upgraded
+      entity: WeaponCrusherLKSH
+      edges:
+        - to: start
+          completed:
+            - !type:GivePrototype
+              prototype: LavaModifierLegion
+              amount: 2
+          steps:
+            - tool: Prying
+              doAfter: 2
+
+- type: constructionGraph
+  id: LavaCrusher1
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: upgraded
+          steps: 
+            - tag: LavaModifierCraftingKSH
+              doAfter: 2
+
+    - node: upgraded
+      entity: WeaponCrusherLKSH
+      edges:
+        - to: start
+          completed:
+            - !type:GivePrototype
+              prototype: LavaModifierBloodMiner
+              amount: 2
+          steps:
+            - tool: Prying
+              doAfter: 2
+
+- type: entity
+  parent: WeaponCrusher
+  id: WeaponCrusherKSH
+  suffix: Лава, трофей
+  name: крушитель
+  description: "На крушителе имеются следующие трофеи: глаз кровавого шахтера"  
+  components:
+  - type: LeechOnMarker
+    leech:
+      groups:
+        Brute: -21
+  - type: Construction
+    graph: LavaCrusher2
+    node: start
+
+- type: entity
+  parent: WeaponCrusher
+  id: WeaponCrusherLKSH
+  suffix: Лава, трофей
+  name: крушитель
+  description: "На крушителе имеются следующие трофеи: глаз кровавого шахтера, череп легиона" 
+  components:
+  - type: LeechOnMarker
+    leech:
+      groups:
+        Brute: -4
+  - type: Gun
+    fireRate: 1.3
+
+- type: entity
+  parent: SalvageHumanCorpse
+  id: MobSalvageSpecialistCorpse
+  suffix: Dead, Cargo
+  components:
+  - type: Loadout
+    prototypes:
+    - SalvageSpecialistGear
+
+- type: entity
+  name: кровавая пила
+  parent: BaseKnife
+  id: BloodPila
+  description: Кровавая пила, вся в крови.
+  components:
+  - type: Tag
+    tags:
+    - Knife
+  - type: Sprite
+    sprite: Objects/Specific/Medical/Surgery/saw.rsi
+    state: saw
+  - type: MeleeWeapon
+    wideAnimationRotation: -115
+    attackRate: 3
+    damage:
+      types:
+        Slash: 5
+
+- type: startingGear
+  id: BloodMinerGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitColorBlack
+    mask: ClothingMaskGasExplorer
+    outerClothing: LavaClothingOuterHardsuitSpatio
+    shoes: ClothingShoesCult
+
+- type: entity
+  parent: LavaClothingOuterHardsuitSpatio
+  noSpawn: true
+  id: LavaClothingOuterHardsuitSpatio1
+  description: Бронированный скафандр, предназначенный для шахтёров на Лаваленде. Одна нашивка
+  components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.50
+        Slash: 0.50
+        Piercing: 0.65
+        Heat: 0.15
+        Radiation: 0.3 #salv is supposed to have radiation hazards in the future
+        Caustic: 0.3
+  - type: Construction
+    graph: LavaSkaf2
+    node: start 
+
+- type: entity
+  parent: LavaClothingOuterHardsuitSpatio
+  noSpawn: true
+  id: LavaClothingOuterHardsuitSpatio2
+  description: Бронированный скафандр, предназначенный для шахтёров на Лаваленде. Две нашивки
+  components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.45
+        Slash: 0.45
+        Piercing: 0.65
+        Heat: 0.15
+        Radiation: 0.3 #salv is supposed to have radiation hazards in the future
+        Caustic: 0.3
+  - type: Construction
+    graph: LavaSkaf3
+    node: start 
+
+- type: entity
+  parent: LavaClothingOuterHardsuitSpatio
+  noSpawn: true
+  id: LavaClothingOuterHardsuitSpatio3
+  description: Бронированный скафандр, предназначенный для шахтёров на Лаваленде. Три нашивки
+  components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.40
+        Slash: 0.40
+        Piercing: 0.65
+        Heat: 0.15
+        Radiation: 0.3 #salv is supposed to have radiation hazards in the future
+        Caustic: 0.3
+  - type: Construction
+    graph: LavaSkaf4
+    node: start 
+
+- type: entity
+  parent: LavaClothingOuterHardsuitSpatio
+  id: LavaClothingOuterHardsuitSpatio4
+  noSpawn: true
+  description: Бронированный скафандр, предназначенный для шахтёров на Лаваленде. Четыре нашивки
+  components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.35
+        Slash: 0.35
+        Piercing: 0.7
+        Heat: 0.2
+        Radiation: 0.1 #salv is supposed to have radiation hazards in the future
+        Caustic: 0.3
+  - type: Construction
+    graph: LavaSkaf4
+    node: start 
+
+- type: constructionGraph
+  id: LavaSkaf1
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: upgraded
+          steps: 
+            - tag: LavaModifierCraftingSKIN
+              doAfter: 10
+
+    - node: upgraded
+      entity: LavaClothingOuterHardsuitSpatio1
+
+- type: constructionGraph
+  id: LavaSkaf2
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: upgraded
+          steps: 
+            - tag: LavaModifierCraftingSKIN
+              doAfter: 10
+
+    - node: upgraded
+      entity: LavaClothingOuterHardsuitSpatio2
+
+- type: constructionGraph
+  id: LavaSkaf3
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: upgraded
+          steps: 
+            - tag: LavaModifierCraftingSKIN
+              doAfter: 10
+
+    - node: upgraded
+      entity: LavaClothingOuterHardsuitSpatio3
+
+- type: constructionGraph
+  id: LavaSkaf4
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: upgraded
+          steps: 
+            - tag: LavaModifierCraftingSKIN
+              doAfter: 10
+
+    - node: upgraded
+      entity: LavaClothingOuterHardsuitSpatio4
+
+- type: entity
+  parent: ClothingOuterHardsuitSalvage
+  noSpawn: true
+  id: ClothingOuterHardsuitSalvage1
+  description: Имеет 1 нашивки.
+  components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.65
+        Slash: 0.65
+        Piercing: 0.5
+        Radiation: 0.3
+        Caustic: 0.7
+        Stun: 0.7
+  - type: Construction
+    graph: LavaSkaf1.2
+    node: start 
+
+- type: entity
+  parent: ClothingOuterHardsuitSalvage
+  noSpawn: true
+  id: ClothingOuterHardsuitSalvage2
+  description: Имеет 2 нашивки.
+  components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.6
+        Slash: 0.6
+        Piercing: 0.5
+        Radiation: 0.3
+        Caustic: 0.7
+        Stun: 0.7
+  - type: Construction
+    graph: LavaSkaf1.3
+    node: start 
+
+- type: entity
+  parent: ClothingOuterHardsuitSalvage
+  noSpawn: true
+  id: ClothingOuterHardsuitSalvage3
+  description: Имеет 3 нашивки.
+  components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.55
+        Slash: 0.55
+        Piercing: 0.5
+        Radiation: 0.3
+        Caustic: 0.7
+        Stun: 0.7
+  - type: Construction
+    graph: LavaSkaf1.4
+    node: start 
+
+- type: entity
+  parent: ClothingOuterHardsuitSalvage
+  noSpawn: true
+  id: ClothingOuterHardsuitSalvage4
+  description: Имеет 4 нашивки.
+  components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.5
+        Slash: 0.5
+        Piercing: 0.45
+        Radiation: 0.2
+        Caustic: 0.7
+        Stun: 0.5
+  - type: Construction
+    graph: LavaSkaf1.4
+    node: start 
+
+- type: constructionGraph
+  id: LavaSkaf1.1
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: upgraded
+          steps: 
+            - tag: LavaModifierCraftingSKIN
+              doAfter: 10
+
+    - node: upgraded
+      entity: ClothingOuterHardsuitSalvage1
+
+- type: constructionGraph
+  id: LavaSkaf1.2
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: upgraded
+          steps: 
+            - tag: LavaModifierCraftingSKIN
+              doAfter: 10
+
+    - node: upgraded
+      entity: ClothingOuterHardsuitSalvage2
+
+- type: constructionGraph
+  id: LavaSkaf1.3
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: upgraded
+          steps: 
+            - tag: LavaModifierCraftingSKIN
+              doAfter: 10
+
+    - node: upgraded
+      entity: ClothingOuterHardsuitSalvage3
+
+- type: constructionGraph
+  id: LavaSkaf1.4
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: upgraded
+          steps: 
+            - tag: LavaModifierCraftingSKIN
+              doAfter: 10
+
+    - node: upgraded
+      entity: ClothingOuterHardsuitSalvage4
+
+
+- type: entity
+  parent: ClothingOuterHardsuitMaxim
+  noSpawn: true
+  id: ClothingOuterHardsuitMaxim1
+  name: salvager maxim hardsuit
+  description: Имеет 1 нашивку.
+  components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.55
+        Slash: 0.55
+        Piercing: 0.5
+        Heat: 0.3
+        Radiation: 0.1
+  - type: Construction
+    graph: LavaSkaf2.2
+    node: start 
+
+- type: entity
+  parent: ClothingOuterHardsuitMaxim
+  noSpawn: true
+  id: ClothingOuterHardsuitMaxim2
+  name: salvager maxim hardsuit
+  description: Имеет 2 нашивку.
+  components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.5
+        Slash: 0.5
+        Piercing: 0.5
+        Heat: 0.3
+        Radiation: 0.1
+  - type: Construction
+    graph: LavaSkaf2.3
+    node: start 
+
+- type: entity
+  parent: ClothingOuterHardsuitMaxim
+  noSpawn: true
+  id: ClothingOuterHardsuitMaxim3
+  name: salvager maxim hardsuit
+  description: Имеет 3 нашивку.
+  components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.45
+        Slash: 0.45
+        Piercing: 0.5
+        Heat: 0.3
+        Radiation: 0.1
+  - type: Construction
+    graph: LavaSkaf2.4
+    node: start 
+
+- type: entity
+  parent: ClothingOuterHardsuitMaxim
+  noSpawn: true
+  id: ClothingOuterHardsuitMaxim4
+  name: salvager maxim hardsuit
+  description: Имеет 4 нашивку.
+  components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.4
+        Slash: 0.4
+        Piercing: 0.5
+        Heat: 0.4
+        Radiation: 0.05
+  - type: Construction
+    graph: LavaSkaf2.4
+    node: start 
+
+- type: constructionGraph
+  id: LavaSkaf2.1
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: upgraded
+          steps: 
+            - tag: LavaModifierCraftingSKIN
+              doAfter: 10
+
+    - node: upgraded
+      entity: ClothingOuterHardsuitMaxim1
+
+- type: constructionGraph
+  id: LavaSkaf2.2
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: upgraded
+          steps: 
+            - tag: LavaModifierCraftingSKIN
+              doAfter: 10
+
+    - node: upgraded
+      entity: ClothingOuterHardsuitMaxim2
+
+- type: constructionGraph
+  id: LavaSkaf2.3
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: upgraded
+          steps: 
+            - tag: LavaModifierCraftingSKIN
+              doAfter: 10
+
+    - node: upgraded
+      entity: ClothingOuterHardsuitMaxim3
+
+- type: constructionGraph
+  id: LavaSkaf2.4
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: upgraded
+          steps: 
+            - tag: LavaModifierCraftingSKIN
+              doAfter: 10
+
+    - node: upgraded
+      entity: ClothingOuterHardsuitMaxim4

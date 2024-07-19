@@ -1,0 +1,54 @@
+
+- type: entity
+  name: Спавнер Дрейка
+  id: SpawnMobDrake
+  parent: SpawnMobLegion
+  components:
+  - type: ConditionalSpawner
+    prototypes:
+    - MobAshDrake
+
+- type: entity
+  name: Спавнер Колосса
+  id: SpawnMobColossus 
+  parent: SpawnMobLegion
+  components:
+  - type: ConditionalSpawner
+    prototypes:
+    - MobColossus 
+
+- type: entity
+  name: Спавнер Бубльгум
+  id: SpawnMobBubblegum
+  parent: SpawnMobLegion
+  components:
+  - type: ConditionalSpawner
+    prototypes:
+    - MobBubblegum
+
+- type: entity
+  name: Спавнер большого Легиона
+  id: SpawnMobBigLegion
+  parent: SpawnMobLegion
+  components:
+  - type: ConditionalSpawner
+    prototypes:
+    - MobDinosaurAnki
+
+- type: entity
+  name: Спавнер Пилы кровавого утилизатора
+  id: SpawnMobBloodMinerPila
+  parent: SpawnMobLegion
+  components:
+  - type: ConditionalSpawner
+    prototypes:
+    - BloodPila
+
+- type: entity
+  name: Спавнер Кровавого утилизатора
+  id: SpawnMobBloodMiner
+  parent: SpawnMobLegion
+  components:
+  - type: ConditionalSpawner
+    prototypes:
+    - BloodMinerMob 
